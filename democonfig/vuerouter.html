@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>vue-router | Lujinbao</title>
+    <meta name="generator" content="VuePress 1.8.2" />
+    <link rel="icon" href="/img/logo.png">
+    <link rel="manifest" href="/img/photo.jpg">
+    <link rel="apple-touch-icon" href="/img/logo.png"> <meta name="description" content="记录笔记✏️✏️">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <meta name="viewport" cotent="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">  <link rel="preload" href="/assets/css/0.styles.8ba69554.css" as="style"><link rel="preload" href="/assets/js/app.96655bd5.js" as="script"><link rel="preload" href="/assets/js/2.c765e33f.js" as="script"><link rel="preload" href="/assets/js/22.772e3532.js" as="script"><link rel="prefetch" href="/assets/js/10.1ea36065.js"><link rel="prefetch" href="/assets/js/11.690eb451.js"><link rel="prefetch" href="/assets/js/12.c575bbda.js"><link rel="prefetch" href="/assets/js/13.519da14a.js"><link rel="prefetch" href="/assets/js/14.aec29db6.js"><link rel="prefetch" href="/assets/js/15.79bad737.js"><link rel="prefetch" href="/assets/js/16.99c0b45b.js"><link rel="prefetch" href="/assets/js/17.7629b526.js"><link rel="prefetch" href="/assets/js/18.094f2dcf.js"><link rel="prefetch" href="/assets/js/19.7da00321.js"><link rel="prefetch" href="/assets/js/20.f1323e33.js"><link rel="prefetch" href="/assets/js/21.65adbe5e.js"><link rel="prefetch" href="/assets/js/23.8521ec2c.js"><link rel="prefetch" href="/assets/js/24.a5d7ff8d.js"><link rel="prefetch" href="/assets/js/25.da29f664.js"><link rel="prefetch" href="/assets/js/26.a54015ef.js"><link rel="prefetch" href="/assets/js/27.9a578738.js"><link rel="prefetch" href="/assets/js/28.4a7125bd.js"><link rel="prefetch" href="/assets/js/29.cf003232.js"><link rel="prefetch" href="/assets/js/3.8d95e623.js"><link rel="prefetch" href="/assets/js/30.630c202d.js"><link rel="prefetch" href="/assets/js/31.a45d5188.js"><link rel="prefetch" href="/assets/js/32.b0d37eb0.js"><link rel="prefetch" href="/assets/js/33.8620ebe6.js"><link rel="prefetch" href="/assets/js/34.2c84c1a9.js"><link rel="prefetch" href="/assets/js/35.7db6554d.js"><link rel="prefetch" href="/assets/js/36.d983ee20.js"><link rel="prefetch" href="/assets/js/37.25c384c0.js"><link rel="prefetch" href="/assets/js/38.6e02e39e.js"><link rel="prefetch" href="/assets/js/39.e3340481.js"><link rel="prefetch" href="/assets/js/4.7c079fc3.js"><link rel="prefetch" href="/assets/js/40.83cc3365.js"><link rel="prefetch" href="/assets/js/41.58964753.js"><link rel="prefetch" href="/assets/js/42.224a4643.js"><link rel="prefetch" href="/assets/js/43.71ba9f07.js"><link rel="prefetch" href="/assets/js/44.83ab7102.js"><link rel="prefetch" href="/assets/js/45.5a47c8a6.js"><link rel="prefetch" href="/assets/js/46.3f7f6010.js"><link rel="prefetch" href="/assets/js/47.3ef9b075.js"><link rel="prefetch" href="/assets/js/48.9ba46b5a.js"><link rel="prefetch" href="/assets/js/49.06f975b6.js"><link rel="prefetch" href="/assets/js/5.f6636d09.js"><link rel="prefetch" href="/assets/js/50.9da386b2.js"><link rel="prefetch" href="/assets/js/51.bd6c24a3.js"><link rel="prefetch" href="/assets/js/52.3d85b3da.js"><link rel="prefetch" href="/assets/js/53.1f92c333.js"><link rel="prefetch" href="/assets/js/54.40509adb.js"><link rel="prefetch" href="/assets/js/6.e4c05762.js"><link rel="prefetch" href="/assets/js/7.708db099.js"><link rel="prefetch" href="/assets/js/8.165d8f13.js"><link rel="prefetch" href="/assets/js/9.e4ef359a.js"> <link rel="stylesheet" href="/assets/css/0.styles.8ba69554.css">
+    <style>
+      @keyframes rotate {
+        0% {
+          transform: translate(-50%, 0) rotateZ(0deg);
+        }
+        50% {
+          transform: translate(-50%, -2%) rotateZ(180deg);
+        }
+        100% {
+          transform: translate(-50%, 0%) rotateZ(360deg);
+        }
+      }
+
+      .footer {
+        max-width: none !important;
+        width: 100%;
+
+        position: relative;
+        padding: 0px !important;
+        align-items: center;
+
+        z-index: 12;
+        height: 40vh;
+        background-color: rgb(118, 218, 255);
+        overflow: hidden;
+      }
+
+      .footer::before,
+      .footer::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        min-width: 300vw;
+        min-height: 300vw;
+        background-color: #fff;
+        animation-name: rotate;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+      .footer::before {
+        bottom: 15vh;
+        border-radius: 45%;
+        animation-duration: 10s;
+      }
+      .footer::after {
+        bottom: 12vh;
+        opacity: 0.5;
+        border-radius: 47%;
+        animation-duration: 10s;
+      }
+      .footer .record {
+        position: absolute;
+        bottom: 20px;
+        z-index: 13;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      h2 {
+        border-bottom: none;
+      }
+
+      .sidebar {
+        z-index: 11;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Lujinbao" class="logo"> <span class="site-name can-hide">Lujinbao</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          v2
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/skills.html" class="nav-link">
+  实用技巧
+</a></li><li class="dropdown-subitem"><a href="/vue/theory.html" class="nav-link">
+  必知原理
+</a></li><li class="dropdown-subitem"><a href="/vue/basic.html" class="nav-link">
+  基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          v3🤨
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/vue3.html" class="nav-link">
+  待更新
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发中" class="dropdown-title"><span class="title">开发中</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发中" class="mobile-dropdown-title"><span class="title">开发中</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/ts/basetype.html" class="nav-link">
+  基本类型
+</a></li><li class="dropdown-subitem"><a href="/ts/compile.html" class="nav-link">
+  编译选项
+</a></li><li class="dropdown-subitem"><a href="/ts/build.html" class="nav-link">
+  打包
+</a></li><li class="dropdown-subitem"><a href="/ts/oop.html" class="nav-link">
+  面向对象
+</a></li><li class="dropdown-subitem"><a href="/ts/interface.html" class="nav-link">
+  接口
+</a></li><li class="dropdown-subitem"><a href="/ts/generic.html" class="nav-link">
+  范型
+</a></li></ul></li><li class="dropdown-item"><h4>
+          模拟测试
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/json-serve.html" class="nav-link">
+  json-serve
+</a></li><li class="dropdown-subitem"><a href="/dev/mockjs.html" class="nav-link">
+  mockjs
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="配置" class="dropdown-title"><span class="title">配置</span> <span class="arrow down"></span></button> <button type="button" aria-label="配置" class="mobile-dropdown-title"><span class="title">配置</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/democonfig/vuerouter.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/axios.html" class="nav-link">
+  axios
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/vuecli.html" class="nav-link">
+  vue-cli4
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/rem.html" class="nav-link">
+  rem
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/format.html" class="nav-link">
+  代码格式化
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/format2.html" class="nav-link">
+  babel
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="设计模式" class="dropdown-title"><span class="title">设计模式</span> <span class="arrow down"></span></button> <button type="button" aria-label="设计模式" class="mobile-dropdown-title"><span class="title">设计模式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/designpatterns/readme1.html" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><h4>
+          创建型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          结构型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          行为型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="经验记录" class="dropdown-title"><span class="title">经验记录</span> <span class="arrow down"></span></button> <button type="button" aria-label="经验记录" class="mobile-dropdown-title"><span class="title">经验记录</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          兼容性
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/H5Compatible.html" class="nav-link">
+  H5组件库兼容
+</a></li><li class="dropdown-subitem"><a href="/experience/iPhonex.html" class="nav-link">
+  iphonex安全区适配
+</a></li><li class="dropdown-subitem"><a href="/experience/pc.html" class="nav-link">
+  PC端兼容性
+</a></li></ul></li><li class="dropdown-item"><h4>
+          性能优化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/performanceoptimization.html" class="nav-link">
+  首页性能优化方案
+</a></li><li class="dropdown-subitem"><a href="/experience/jsoptimization.html" class="nav-link">
+  JS代码优化
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据交互
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/crossDataTransfer.html" class="nav-link">
+  跨域数据传递
+</a></li><li class="dropdown-subitem"><a href="/experience/filedown.html" class="nav-link">
+  前端文件下载
+</a></li><li class="dropdown-subitem"><a href="/experience/postupload.html" class="nav-link">
+  前端post提交
+</a></li></ul></li><li class="dropdown-item"><h4>
+          需求效果
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/Non-inductiverefresh.html" class="nav-link">
+  一些思路
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作记录
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/operationSummary.html" class="nav-link">
+  汇总
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="知识点" class="dropdown-title"><span class="title">知识点</span> <span class="arrow down"></span></button> <button type="button" aria-label="知识点" class="mobile-dropdown-title"><span class="title">知识点</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          理论知识
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/javascript.html" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-subitem"><a href="/knowledge/jsevent.html" class="nav-link">
+  JS事件
+</a></li><li class="dropdown-subitem"><a href="/knowledge/eventloop.html" class="nav-link">
+  JS事件循环
+</a></li><li class="dropdown-subitem"><a href="/knowledge/sourcelink.html" class="nav-link">
+  JS原型链和继承
+</a></li><li class="dropdown-subitem"><a href="/knowledge/callstackenvir.html" class="nav-link">
+  原型和闭包
+</a></li><li class="dropdown-subitem"><a href="/knowledge/authorization.html" class="nav-link">
+  权限校验那点事
+</a></li><li class="dropdown-subitem"><a href="/knowledge/baseknowledge.html" class="nav-link">
+  基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          思路
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/1.html" class="nav-link">
+  埋点实现
+</a></li><li class="dropdown-subitem"><a href="/knowledge/2.html" class="nav-link">
+  动画指令
+</a></li><li class="dropdown-subitem"><a href="/knowledge/3.html" class="nav-link">
+  敏感数据加密方案
+</a></li><li class="dropdown-subitem"><a href="/knowledge/switchskin.html" class="nav-link">
+  皮肤切换
+</a></li><li class="dropdown-subitem"><a href="https://blog.csdn.net/qq_39009348/article/details/105267962" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  多语言方案
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          安全方面
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/async_await.html" class="nav-link">
+  xss
+</a></li></ul></li><li class="dropdown-item"><h4>
+          例子🌰
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/async_await.html" class="nav-link">
+  async/await事件循环
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="好玩🌝" class="dropdown-title"><span class="title">好玩🌝</span> <span class="arrow down"></span></button> <button type="button" aria-label="好玩🌝" class="mobile-dropdown-title"><span class="title">好玩🌝</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tensorflow.google.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  TensorFlow.js
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接分享" class="dropdown-title"><span class="title">链接分享</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接分享" class="mobile-dropdown-title"><span class="title">链接分享</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          知识库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://www.html5iq.com/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端试题库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.cnblogs.com/suihang/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  一只菜鸟工程师
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://f2e.tech/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端知识图谱
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.awesomes.cn/rank" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端top100
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="/everything.html" class="nav-link">
+  前端百科
+</a></li><li class="dropdown-subitem"><a href="/history.html" class="nav-link">
+  前端挣扎史
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://svgtopng.com/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  svg转png 
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  阿里图标库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  兼容自查
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          多端案例
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://svgtopng.com/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  PC后台
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  等等
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          v2
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/skills.html" class="nav-link">
+  实用技巧
+</a></li><li class="dropdown-subitem"><a href="/vue/theory.html" class="nav-link">
+  必知原理
+</a></li><li class="dropdown-subitem"><a href="/vue/basic.html" class="nav-link">
+  基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          v3🤨
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/vue3.html" class="nav-link">
+  待更新
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发中" class="dropdown-title"><span class="title">开发中</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发中" class="mobile-dropdown-title"><span class="title">开发中</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/ts/basetype.html" class="nav-link">
+  基本类型
+</a></li><li class="dropdown-subitem"><a href="/ts/compile.html" class="nav-link">
+  编译选项
+</a></li><li class="dropdown-subitem"><a href="/ts/build.html" class="nav-link">
+  打包
+</a></li><li class="dropdown-subitem"><a href="/ts/oop.html" class="nav-link">
+  面向对象
+</a></li><li class="dropdown-subitem"><a href="/ts/interface.html" class="nav-link">
+  接口
+</a></li><li class="dropdown-subitem"><a href="/ts/generic.html" class="nav-link">
+  范型
+</a></li></ul></li><li class="dropdown-item"><h4>
+          模拟测试
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/json-serve.html" class="nav-link">
+  json-serve
+</a></li><li class="dropdown-subitem"><a href="/dev/mockjs.html" class="nav-link">
+  mockjs
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="配置" class="dropdown-title"><span class="title">配置</span> <span class="arrow down"></span></button> <button type="button" aria-label="配置" class="mobile-dropdown-title"><span class="title">配置</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/democonfig/vuerouter.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/axios.html" class="nav-link">
+  axios
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/vuecli.html" class="nav-link">
+  vue-cli4
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/rem.html" class="nav-link">
+  rem
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/format.html" class="nav-link">
+  代码格式化
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/format2.html" class="nav-link">
+  babel
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="设计模式" class="dropdown-title"><span class="title">设计模式</span> <span class="arrow down"></span></button> <button type="button" aria-label="设计模式" class="mobile-dropdown-title"><span class="title">设计模式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/designpatterns/readme1.html" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><h4>
+          创建型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          结构型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          行为型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="经验记录" class="dropdown-title"><span class="title">经验记录</span> <span class="arrow down"></span></button> <button type="button" aria-label="经验记录" class="mobile-dropdown-title"><span class="title">经验记录</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          兼容性
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/H5Compatible.html" class="nav-link">
+  H5组件库兼容
+</a></li><li class="dropdown-subitem"><a href="/experience/iPhonex.html" class="nav-link">
+  iphonex安全区适配
+</a></li><li class="dropdown-subitem"><a href="/experience/pc.html" class="nav-link">
+  PC端兼容性
+</a></li></ul></li><li class="dropdown-item"><h4>
+          性能优化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/performanceoptimization.html" class="nav-link">
+  首页性能优化方案
+</a></li><li class="dropdown-subitem"><a href="/experience/jsoptimization.html" class="nav-link">
+  JS代码优化
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据交互
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/crossDataTransfer.html" class="nav-link">
+  跨域数据传递
+</a></li><li class="dropdown-subitem"><a href="/experience/filedown.html" class="nav-link">
+  前端文件下载
+</a></li><li class="dropdown-subitem"><a href="/experience/postupload.html" class="nav-link">
+  前端post提交
+</a></li></ul></li><li class="dropdown-item"><h4>
+          需求效果
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/Non-inductiverefresh.html" class="nav-link">
+  一些思路
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作记录
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/operationSummary.html" class="nav-link">
+  汇总
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="知识点" class="dropdown-title"><span class="title">知识点</span> <span class="arrow down"></span></button> <button type="button" aria-label="知识点" class="mobile-dropdown-title"><span class="title">知识点</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          理论知识
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/javascript.html" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-subitem"><a href="/knowledge/jsevent.html" class="nav-link">
+  JS事件
+</a></li><li class="dropdown-subitem"><a href="/knowledge/eventloop.html" class="nav-link">
+  JS事件循环
+</a></li><li class="dropdown-subitem"><a href="/knowledge/sourcelink.html" class="nav-link">
+  JS原型链和继承
+</a></li><li class="dropdown-subitem"><a href="/knowledge/callstackenvir.html" class="nav-link">
+  原型和闭包
+</a></li><li class="dropdown-subitem"><a href="/knowledge/authorization.html" class="nav-link">
+  权限校验那点事
+</a></li><li class="dropdown-subitem"><a href="/knowledge/baseknowledge.html" class="nav-link">
+  基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          思路
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/1.html" class="nav-link">
+  埋点实现
+</a></li><li class="dropdown-subitem"><a href="/knowledge/2.html" class="nav-link">
+  动画指令
+</a></li><li class="dropdown-subitem"><a href="/knowledge/3.html" class="nav-link">
+  敏感数据加密方案
+</a></li><li class="dropdown-subitem"><a href="/knowledge/switchskin.html" class="nav-link">
+  皮肤切换
+</a></li><li class="dropdown-subitem"><a href="https://blog.csdn.net/qq_39009348/article/details/105267962" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  多语言方案
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          安全方面
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/async_await.html" class="nav-link">
+  xss
+</a></li></ul></li><li class="dropdown-item"><h4>
+          例子🌰
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/async_await.html" class="nav-link">
+  async/await事件循环
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="好玩🌝" class="dropdown-title"><span class="title">好玩🌝</span> <span class="arrow down"></span></button> <button type="button" aria-label="好玩🌝" class="mobile-dropdown-title"><span class="title">好玩🌝</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tensorflow.google.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  TensorFlow.js
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接分享" class="dropdown-title"><span class="title">链接分享</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接分享" class="mobile-dropdown-title"><span class="title">链接分享</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          知识库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://www.html5iq.com/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端试题库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.cnblogs.com/suihang/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  一只菜鸟工程师
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://f2e.tech/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端知识图谱
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.awesomes.cn/rank" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端top100
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="/everything.html" class="nav-link">
+  前端百科
+</a></li><li class="dropdown-subitem"><a href="/history.html" class="nav-link">
+  前端挣扎史
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://svgtopng.com/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  svg转png 
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  阿里图标库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  兼容自查
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          多端案例
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://svgtopng.com/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  PC后台
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  等等
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>vue-router</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/democonfig/vuerouter.html#目录结构" class="sidebar-link">目录结构</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/democonfig/vuerouter.html#index-js" class="sidebar-link">index.js</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/democonfig/vuerouter.html#routes-js" class="sidebar-link">routes.js</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/democonfig/vuerouter.html#asyncrouter-js" class="sidebar-link">asyncRouter.js</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/democonfig/vuerouter.html#registerinterceptor-js" class="sidebar-link">registerInterceptor.js</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/democonfig/vuerouter.html#scrollbehavior-js" class="sidebar-link">scrollBehavior.js</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue-router"><a href="#vue-router" class="header-anchor">#</a> vue-router</h1> <h2 id="目录结构"><a href="#目录结构" class="header-anchor">#</a> 目录结构</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>├── router
+│   ├── index.js
+│   ├── routes.js
+│   └── utils
+│       ├── asyncRouter.js
+│       ├── registerInterceptor.js
+│       └── scrollBehavior.js
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="index-js"><a href="#index-js" class="header-anchor">#</a> index.js</h2> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">/**
+ * 路由权限控制方式：beforeEach | addRoutes | 两者结合
+ * 这里封装了 addRoutes 方式，即 resetRoutes 与 filterMapRoutes
+ */</span>
+<span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+<span class="token keyword">import</span> Router <span class="token keyword">from</span> <span class="token string">&quot;vue-router&quot;</span>
+<span class="token keyword">import</span> scrollBehavior <span class="token keyword">from</span> <span class="token string">&quot;./utils/scrollBehavior&quot;</span>
+<span class="token keyword">import</span> routes <span class="token keyword">from</span> <span class="token string">&quot;./routes&quot;</span>
+<span class="token keyword">import</span> registerInterceptor <span class="token keyword">from</span> <span class="token string">&quot;./utils/registerInterceptor&quot;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> filterAsyncRoutes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;./utils/asyncRouter&quot;</span>
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Router<span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> originalPush <span class="token operator">=</span> <span class="token class-name">Router</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>push
+<span class="token class-name">Router</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">push</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token parameter">location</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token function">originalPush</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> location<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> err<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> mode <span class="token operator">=</span> <span class="token string">&quot;hash&quot;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">createRouter</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> base <span class="token operator">=</span> mode <span class="token operator">===</span> <span class="token string">&quot;hash&quot;</span> <span class="token operator">?</span> <span class="token string">&quot;/&quot;</span> <span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">BASE_URL</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token punctuation">{</span> mode<span class="token punctuation">,</span> base<span class="token punctuation">,</span> scrollBehavior <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 全局唯一 Router 实例
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">createRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">/**
+ * 路由重置
+ * @param {routes} newRoutes
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">resetRoutes</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">newRoutes</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  router<span class="token punctuation">.</span>matcher <span class="token operator">=</span> <span class="token function">createRouter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>matcher
+  router<span class="token punctuation">.</span><span class="token function">addRoutes</span><span class="token punctuation">(</span>newRoutes<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>router<span class="token punctuation">.</span>app<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> path<span class="token punctuation">,</span> query<span class="token punctuation">,</span> hash <span class="token punctuation">}</span> <span class="token operator">=</span> router<span class="token punctuation">.</span>currentRoute
+    router
+      <span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token punctuation">{</span> path<span class="token punctuation">,</span> query<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span>query<span class="token punctuation">,</span> _resetRoutes<span class="token operator">:</span> <span class="token string">&quot;1&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> hash <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> router<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token punctuation">{</span> path<span class="token punctuation">,</span> query<span class="token punctuation">,</span> hash <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * 路由过滤（过滤出有权限的路由）
+ * 需求：根据后台数据动态添加路由和菜单
+ * @param {(meta: object, route: routes[0]) =&gt; boolean} filterCallback
+ * @returns {routes}
+ */</span>
+<span class="token comment">// export const filterMapRoutes = function(filterCallback) {</span>
+<span class="token comment">//   const loop = curRoutes =&gt;</span>
+<span class="token comment">//     curRoutes</span>
+<span class="token comment">//       .filter(route =&gt; filterCallback(route.meta || {}, route))</span>
+<span class="token comment">//       .map(({ children, ...newRoute }) =&gt; {</span>
+<span class="token comment">//         if (children) newRoute.children = loop(children)</span>
+<span class="token comment">//         return newRoute</span>
+<span class="token comment">//       })</span>
+<span class="token comment">//   return loop(routes)</span>
+<span class="token comment">// }</span>
+
+<span class="token comment">/* 注册路由拦截器 */</span>
+<span class="token function">registerInterceptor</span><span class="token punctuation">(</span>router<span class="token punctuation">)</span>
+
+<span class="token comment">/* 初始化公共路由（相当于路由白名单） */</span>
+<span class="token comment">// resetRoutes(</span>
+<span class="token comment">//   filterMapRoutes(meta =&gt; {</span>
+<span class="token comment">//     return meta.roles === undefined || meta.roles.length === 0 // 如何处理路由权限因项目而异...</span>
+<span class="token comment">//   }),</span>
+<span class="token comment">// )</span>
+
+<span class="token function">resetRoutes</span><span class="token punctuation">(</span><span class="token function">filterAsyncRoutes</span><span class="token punctuation">(</span>routes<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> router
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br></div></div><h2 id="routes-js"><a href="#routes-js" class="header-anchor">#</a> routes.js</h2> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">/* 动态 path 匹配例子：https://github.com/vuejs/vue-router/blob/dev/examples/route-matching/app.js */</span>
+
+<span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">&quot;@/router&quot;</span>
+
+<span class="token comment">// 登录页</span>
+<span class="token keyword">const</span> <span class="token function-variable function">Login</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token comment">/* webpackChunkName: &quot;Login&quot; */</span> <span class="token string">&quot;@/views/login&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// 注册页</span>
+<span class="token keyword">const</span> <span class="token function-variable function">Register</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span>
+  <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token comment">/* webpackChunkName: &quot;Register&quot; */</span> <span class="token string">&quot;@/views/register&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// 功能页入口</span>
+<span class="token keyword">const</span> <span class="token function-variable function">Index</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token comment">/* webpackChunkName: &quot;Index&quot; */</span> <span class="token string">&quot;@/views/index.vue&quot;</span><span class="token punctuation">)</span>
+<span class="token comment">// 功能页-首页</span>
+<span class="token keyword">const</span> <span class="token function-variable function">Home</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token comment">/* webpackChunkName: &quot;Home&quot; */</span> <span class="token string">&quot;@/views/home&quot;</span><span class="token punctuation">)</span>
+
+<span class="token comment">/**
+ * @type {import('vue-router').RouteConfig[]}
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> routes <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span>
+    path<span class="token operator">:</span> <span class="token string">&quot;/index&quot;</span><span class="token punctuation">,</span>
+    component<span class="token operator">:</span> Index<span class="token punctuation">,</span>
+    redirect<span class="token operator">:</span> <span class="token string">&quot;/home&quot;</span><span class="token punctuation">,</span>
+    children<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        path<span class="token operator">:</span> <span class="token string">&quot;/home&quot;</span><span class="token punctuation">,</span>
+        name<span class="token operator">:</span> <span class="token string">&quot;Home&quot;</span><span class="token punctuation">,</span>
+        meta<span class="token operator">:</span> <span class="token punctuation">{</span> title<span class="token operator">:</span> <span class="token string">&quot;首页&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        component<span class="token operator">:</span> Home<span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    path<span class="token operator">:</span> <span class="token string">&quot;/login&quot;</span><span class="token punctuation">,</span>
+    name<span class="token operator">:</span> <span class="token string">&quot;Login&quot;</span><span class="token punctuation">,</span>
+    meta<span class="token operator">:</span> <span class="token punctuation">{</span> title<span class="token operator">:</span> <span class="token string">&quot;登录&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    component<span class="token operator">:</span> Login<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    path<span class="token operator">:</span> <span class="token string">&quot;/register&quot;</span><span class="token punctuation">,</span>
+    name<span class="token operator">:</span> <span class="token string">&quot;Register&quot;</span><span class="token punctuation">,</span>
+    meta<span class="token operator">:</span> <span class="token punctuation">{</span> title<span class="token operator">:</span> <span class="token string">&quot;注册账号&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    component<span class="token operator">:</span> Register<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    path<span class="token operator">:</span> <span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span>
+    redirect<span class="token operator">:</span> <span class="token string">&quot;/login&quot;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    path<span class="token operator">:</span> <span class="token string">&quot;/*&quot;</span><span class="token punctuation">,</span>
+    name<span class="token operator">:</span> <span class="token string">&quot;404&quot;</span><span class="token punctuation">,</span>
+    meta<span class="token operator">:</span> <span class="token punctuation">{</span> title<span class="token operator">:</span> <span class="token string">&quot;404&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span>
+      <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token comment">/* webpackChunkName: &quot;error_404&quot; */</span> <span class="token string">&quot;@/views/other/404.vue&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span>
+
+<span class="token comment">/**
+ * 设置开发环境中特有路由
+ */</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">VUE_APP_ENV</span> <span class="token operator">===</span> <span class="token string">&quot;dev&quot;</span> <span class="token operator">||</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">VUE_APP_ENV</span> <span class="token operator">===</span> <span class="token string">&quot;stage&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  routes<span class="token punctuation">.</span><span class="token function">unshift</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    path<span class="token operator">:</span> <span class="token string">&quot;/test&quot;</span><span class="token punctuation">,</span>
+    name<span class="token operator">:</span> <span class="token string">&quot;test&quot;</span><span class="token punctuation">,</span>
+    meta<span class="token operator">:</span> <span class="token punctuation">{</span> title<span class="token operator">:</span> <span class="token string">&quot;开发测试页面&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">component</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">&quot;@/views/other/test.vue&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">beforeEnter</span><span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>from<span class="token punctuation">.</span>matched<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> from<span class="token punctuation">.</span>path <span class="token operator">===</span> <span class="token string">&quot;/&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+      <span class="token punctuation">}</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+      window<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>router<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>fullPath<span class="token punctuation">)</span><span class="token punctuation">.</span>href<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> routes
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br></div></div><h2 id="asyncrouter-js"><a href="#asyncrouter-js" class="header-anchor">#</a> asyncRouter.js</h2> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">/**
+ * 异步路由配置方法（根据用户权限roles）
+ */</span>
+
+<span class="token comment">/* 判断当前角色是否有访问权限，没有roles的默认为可访问，有roles则根据roles表来配置路由 */</span>
+<span class="token keyword">const</span> <span class="token function-variable function">hasPermission</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">roles<span class="token punctuation">,</span> route</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>route<span class="token punctuation">.</span>meta <span class="token operator">&amp;&amp;</span> route<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>roles<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> roles<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">role</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> route<span class="token punctuation">.</span>meta<span class="token punctuation">.</span>roles<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>role<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 递归过滤异步路由表，筛选角色权限路由 */</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">filterAsyncRoutes</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">routes<span class="token punctuation">,</span> roles</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  routes<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">route</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> tmp <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>route <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">hasPermission</span><span class="token punctuation">(</span>roles<span class="token punctuation">,</span> tmp<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>tmp<span class="token punctuation">.</span>children<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        tmp<span class="token punctuation">.</span>children <span class="token operator">=</span> <span class="token function">filterAsyncRoutes</span><span class="token punctuation">(</span>tmp<span class="token punctuation">.</span>children<span class="token punctuation">,</span> roles<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+      res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>tmp<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> res
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * 路由重置
+ * @param {routes} newRoutes
+ */</span>
+<span class="token comment">// export const resetRoutes = function(newRoutes) {</span>
+<span class="token comment">//   router.matcher = createRouter().matcher</span>
+<span class="token comment">//   router.addRoutes(newRoutes)</span>
+<span class="token comment">//   if (router.app) {</span>
+<span class="token comment">//     const { path, query, hash } = router.currentRoute</span>
+<span class="token comment">//     router</span>
+<span class="token comment">//       .replace({ path, query: { ...query, _resetRoutes: '1' }, hash })</span>
+<span class="token comment">//       .then(() =&gt; router.replace({ path, query, hash }))</span>
+<span class="token comment">//   }</span>
+<span class="token comment">// }</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br></div></div><h2 id="registerinterceptor-js"><a href="#registerinterceptor-js" class="header-anchor">#</a> registerInterceptor.js</h2> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">/**
+ * @param {import('vue-router').default} router
+ */</span>
+<span class="token comment">// import store from '@/store'</span>
+<span class="token comment">// import { filterAsyncRoutes } from './asyncRouter.js'</span>
+<span class="token comment">// import routes from '../routes'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">router</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>router<span class="token punctuation">.</span>_registerInterceptor<span class="token punctuation">)</span> <span class="token keyword">return</span>
+  router<span class="token punctuation">.</span>_registerInterceptor <span class="token operator">=</span> <span class="token boolean">true</span>
+
+  <span class="token comment">/* 页面标题处理 */</span>
+  router<span class="token punctuation">.</span><span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">to</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> <span class="token punctuation">{</span> title <span class="token punctuation">}</span> <span class="token operator">=</span> to<span class="token punctuation">.</span>meta
+    title <span class="token operator">=</span> <span class="token keyword">typeof</span> title <span class="token operator">===</span> <span class="token string">&quot;function&quot;</span> <span class="token operator">?</span> <span class="token function">title</span><span class="token punctuation">(</span>to<span class="token punctuation">)</span> <span class="token operator">:</span> title
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>title<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      document<span class="token punctuation">.</span>title <span class="token operator">=</span> title <span class="token operator">+</span> <span class="token string">&quot; · 5G消息交易管理平台&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token comment">/* 导航守卫：通过白名单页面不需要token */</span>
+  router<span class="token punctuation">.</span><span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> whiteList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;/login&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;/register&quot;</span><span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>whiteList<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>path<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 非登录注册页</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>localStorage<span class="token punctuation">.</span>token <span class="token operator">&amp;&amp;</span> localStorage<span class="token punctuation">.</span>token <span class="token operator">!==</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/login?redirect=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>to<span class="token punctuation">.</span>path<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token comment">// CSP用户无法访问“开发者模式”</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>sessionStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">&quot;csp&quot;</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> to<span class="token punctuation">.</span>path <span class="token operator">===</span> <span class="token string">&quot;/developer&quot;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">next</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token comment">/* 导航守卫：通过用户角色 */</span>
+  <span class="token comment">// router.beforeEach(async (to, from, next) =&gt; {</span>
+  <span class="token comment">//   // 获取用户登录的token</span>
+  <span class="token comment">//   // const hasToken = getToken()</span>
+  <span class="token comment">//   const hasToken = '123'</span>
+  <span class="token comment">//   const whiteList = ['/login', '/register']</span>
+  <span class="token comment">//   // 判断当前用户是否登录</span>
+  <span class="token comment">//   if (hasToken) {</span>
+  <span class="token comment">//     if (to.path === '/login') {</span>
+  <span class="token comment">//       next()</span>
+  <span class="token comment">//     } else {</span>
+  <span class="token comment">//       // 从store中获取用户角色</span>
+  <span class="token comment">//       const hasRoles =</span>
+  <span class="token comment">//         store.state.user.userInfo.roles &amp;&amp;</span>
+  <span class="token comment">//         store.state.user.userInfo.roles.length &gt; 0</span>
+  <span class="token comment">//       if (hasRoles) {</span>
+  <span class="token comment">//         next()</span>
+  <span class="token comment">//       } else {</span>
+  <span class="token comment">//         try {</span>
+  <span class="token comment">//           // 获取用户角色，在userRoles中发请求获取</span>
+  <span class="token comment">//           const roles = await store.getters['user/userRoles']</span>
+  <span class="token comment">//           // 通过用户角色，获取到角色路由表</span>
+  <span class="token comment">//           const accessRoutes = filterAsyncRoutes(routes, roles)</span>
+  <span class="token comment">//           // 动态添加路由到router内</span>
+  <span class="token comment">//           router.addRoutes(accessRoutes)</span>
+  <span class="token comment">//           next({ ...to, replace: true })</span>
+  <span class="token comment">//         } catch (error) {</span>
+  <span class="token comment">//           // 清除用户登录信息后，回跳到登录页去</span>
+  <span class="token comment">//           next(`/login?redirect=${to.path}`)</span>
+  <span class="token comment">//         }</span>
+  <span class="token comment">//       }</span>
+  <span class="token comment">//     }</span>
+  <span class="token comment">//   } else {</span>
+  <span class="token comment">//     // 用户未登录</span>
+  <span class="token comment">//     if (whiteList.indexOf(to.path) !== -1) {</span>
+  <span class="token comment">//       // 需要跳转的路由是否是whiteList中的路由，若是，则直接跳转</span>
+  <span class="token comment">//       next()</span>
+  <span class="token comment">//     } else {</span>
+  <span class="token comment">//       // 需要跳转的路由不是whiteList中的路由，直接跳转到登录页</span>
+  <span class="token comment">//       next(`/login?redirect=${to.path}`)</span>
+  <span class="token comment">//     }</span>
+  <span class="token comment">//   }</span>
+  <span class="token comment">// })</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br></div></div><h2 id="scrollbehavior-js"><a href="#scrollbehavior-js" class="header-anchor">#</a> scrollBehavior.js</h2> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token comment">/**
+ * @type {import('vue-router').RouterOptions['scrollBehavior']}
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> savedPosition</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>to<span class="token punctuation">.</span>path <span class="token operator">!==</span> from<span class="token punctuation">.</span>path<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>savedPosition<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> savedPosition
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// app.vue里面元素</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;viewer-wrapper&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">&quot;viewer-wrapper&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span>scrollTop <span class="token operator">=</span> <span class="token number">0</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> x<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// if (to.hash) return { selector: to.hash }</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">11/8/2021, 11:26:02 PM</span></div></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.96655bd5.js" defer></script><script src="/assets/js/2.c765e33f.js" defer></script><script src="/assets/js/22.772e3532.js" defer></script>
+    <div class="footer">
+        <div
+          class="record"
+          onclick="window.open('https:\/\/beian.miit.gov.cn/','__brank')"
+        >
+          粤ICP备2021166883号
+        </div>
+  </body>
+</html>

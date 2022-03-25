@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>vue 原理 | Lujinbao</title>
+    <meta name="generator" content="VuePress 1.8.2" />
+    <link rel="icon" href="/img/logo.png">
+    <link rel="manifest" href="/img/photo.jpg">
+    <link rel="apple-touch-icon" href="/img/logo.png"> <meta name="description" content="记录笔记✏️✏️">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <meta name="viewport" cotent="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">  <link rel="preload" href="/assets/css/0.styles.8ba69554.css" as="style"><link rel="preload" href="/assets/js/app.96655bd5.js" as="script"><link rel="preload" href="/assets/js/2.c765e33f.js" as="script"><link rel="preload" href="/assets/js/4.7c079fc3.js" as="script"><link rel="prefetch" href="/assets/js/10.1ea36065.js"><link rel="prefetch" href="/assets/js/11.690eb451.js"><link rel="prefetch" href="/assets/js/12.c575bbda.js"><link rel="prefetch" href="/assets/js/13.519da14a.js"><link rel="prefetch" href="/assets/js/14.aec29db6.js"><link rel="prefetch" href="/assets/js/15.79bad737.js"><link rel="prefetch" href="/assets/js/16.99c0b45b.js"><link rel="prefetch" href="/assets/js/17.7629b526.js"><link rel="prefetch" href="/assets/js/18.094f2dcf.js"><link rel="prefetch" href="/assets/js/19.7da00321.js"><link rel="prefetch" href="/assets/js/20.f1323e33.js"><link rel="prefetch" href="/assets/js/21.65adbe5e.js"><link rel="prefetch" href="/assets/js/22.772e3532.js"><link rel="prefetch" href="/assets/js/23.8521ec2c.js"><link rel="prefetch" href="/assets/js/24.a5d7ff8d.js"><link rel="prefetch" href="/assets/js/25.da29f664.js"><link rel="prefetch" href="/assets/js/26.a54015ef.js"><link rel="prefetch" href="/assets/js/27.9a578738.js"><link rel="prefetch" href="/assets/js/28.4a7125bd.js"><link rel="prefetch" href="/assets/js/29.cf003232.js"><link rel="prefetch" href="/assets/js/3.8d95e623.js"><link rel="prefetch" href="/assets/js/30.630c202d.js"><link rel="prefetch" href="/assets/js/31.a45d5188.js"><link rel="prefetch" href="/assets/js/32.b0d37eb0.js"><link rel="prefetch" href="/assets/js/33.8620ebe6.js"><link rel="prefetch" href="/assets/js/34.2c84c1a9.js"><link rel="prefetch" href="/assets/js/35.7db6554d.js"><link rel="prefetch" href="/assets/js/36.d983ee20.js"><link rel="prefetch" href="/assets/js/37.25c384c0.js"><link rel="prefetch" href="/assets/js/38.6e02e39e.js"><link rel="prefetch" href="/assets/js/39.e3340481.js"><link rel="prefetch" href="/assets/js/40.83cc3365.js"><link rel="prefetch" href="/assets/js/41.58964753.js"><link rel="prefetch" href="/assets/js/42.224a4643.js"><link rel="prefetch" href="/assets/js/43.71ba9f07.js"><link rel="prefetch" href="/assets/js/44.83ab7102.js"><link rel="prefetch" href="/assets/js/45.5a47c8a6.js"><link rel="prefetch" href="/assets/js/46.3f7f6010.js"><link rel="prefetch" href="/assets/js/47.3ef9b075.js"><link rel="prefetch" href="/assets/js/48.9ba46b5a.js"><link rel="prefetch" href="/assets/js/49.06f975b6.js"><link rel="prefetch" href="/assets/js/5.f6636d09.js"><link rel="prefetch" href="/assets/js/50.9da386b2.js"><link rel="prefetch" href="/assets/js/51.bd6c24a3.js"><link rel="prefetch" href="/assets/js/52.3d85b3da.js"><link rel="prefetch" href="/assets/js/53.1f92c333.js"><link rel="prefetch" href="/assets/js/54.40509adb.js"><link rel="prefetch" href="/assets/js/6.e4c05762.js"><link rel="prefetch" href="/assets/js/7.708db099.js"><link rel="prefetch" href="/assets/js/8.165d8f13.js"><link rel="prefetch" href="/assets/js/9.e4ef359a.js"> <link rel="stylesheet" href="/assets/css/0.styles.8ba69554.css">
+    <style>
+      @keyframes rotate {
+        0% {
+          transform: translate(-50%, 0) rotateZ(0deg);
+        }
+        50% {
+          transform: translate(-50%, -2%) rotateZ(180deg);
+        }
+        100% {
+          transform: translate(-50%, 0%) rotateZ(360deg);
+        }
+      }
+
+      .footer {
+        max-width: none !important;
+        width: 100%;
+
+        position: relative;
+        padding: 0px !important;
+        align-items: center;
+
+        z-index: 12;
+        height: 40vh;
+        background-color: rgb(118, 218, 255);
+        overflow: hidden;
+      }
+
+      .footer::before,
+      .footer::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        min-width: 300vw;
+        min-height: 300vw;
+        background-color: #fff;
+        animation-name: rotate;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+      .footer::before {
+        bottom: 15vh;
+        border-radius: 45%;
+        animation-duration: 10s;
+      }
+      .footer::after {
+        bottom: 12vh;
+        opacity: 0.5;
+        border-radius: 47%;
+        animation-duration: 10s;
+      }
+      .footer .record {
+        position: absolute;
+        bottom: 20px;
+        z-index: 13;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      h2 {
+        border-bottom: none;
+      }
+
+      .sidebar {
+        z-index: 11;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Lujinbao" class="logo"> <span class="site-name can-hide">Lujinbao</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          v2
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/skills.html" class="nav-link">
+  实用技巧
+</a></li><li class="dropdown-subitem"><a href="/vue/theory.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  必知原理
+</a></li><li class="dropdown-subitem"><a href="/vue/basic.html" class="nav-link">
+  基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          v3🤨
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/vue3.html" class="nav-link">
+  待更新
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发中" class="dropdown-title"><span class="title">开发中</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发中" class="mobile-dropdown-title"><span class="title">开发中</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/ts/basetype.html" class="nav-link">
+  基本类型
+</a></li><li class="dropdown-subitem"><a href="/ts/compile.html" class="nav-link">
+  编译选项
+</a></li><li class="dropdown-subitem"><a href="/ts/build.html" class="nav-link">
+  打包
+</a></li><li class="dropdown-subitem"><a href="/ts/oop.html" class="nav-link">
+  面向对象
+</a></li><li class="dropdown-subitem"><a href="/ts/interface.html" class="nav-link">
+  接口
+</a></li><li class="dropdown-subitem"><a href="/ts/generic.html" class="nav-link">
+  范型
+</a></li></ul></li><li class="dropdown-item"><h4>
+          模拟测试
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/json-serve.html" class="nav-link">
+  json-serve
+</a></li><li class="dropdown-subitem"><a href="/dev/mockjs.html" class="nav-link">
+  mockjs
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="配置" class="dropdown-title"><span class="title">配置</span> <span class="arrow down"></span></button> <button type="button" aria-label="配置" class="mobile-dropdown-title"><span class="title">配置</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/democonfig/vuerouter.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/axios.html" class="nav-link">
+  axios
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/vuecli.html" class="nav-link">
+  vue-cli4
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/rem.html" class="nav-link">
+  rem
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/format.html" class="nav-link">
+  代码格式化
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/format2.html" class="nav-link">
+  babel
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="设计模式" class="dropdown-title"><span class="title">设计模式</span> <span class="arrow down"></span></button> <button type="button" aria-label="设计模式" class="mobile-dropdown-title"><span class="title">设计模式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/designpatterns/readme1.html" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><h4>
+          创建型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          结构型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          行为型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="经验记录" class="dropdown-title"><span class="title">经验记录</span> <span class="arrow down"></span></button> <button type="button" aria-label="经验记录" class="mobile-dropdown-title"><span class="title">经验记录</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          兼容性
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/H5Compatible.html" class="nav-link">
+  H5组件库兼容
+</a></li><li class="dropdown-subitem"><a href="/experience/iPhonex.html" class="nav-link">
+  iphonex安全区适配
+</a></li><li class="dropdown-subitem"><a href="/experience/pc.html" class="nav-link">
+  PC端兼容性
+</a></li></ul></li><li class="dropdown-item"><h4>
+          性能优化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/performanceoptimization.html" class="nav-link">
+  首页性能优化方案
+</a></li><li class="dropdown-subitem"><a href="/experience/jsoptimization.html" class="nav-link">
+  JS代码优化
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据交互
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/crossDataTransfer.html" class="nav-link">
+  跨域数据传递
+</a></li><li class="dropdown-subitem"><a href="/experience/filedown.html" class="nav-link">
+  前端文件下载
+</a></li><li class="dropdown-subitem"><a href="/experience/postupload.html" class="nav-link">
+  前端post提交
+</a></li></ul></li><li class="dropdown-item"><h4>
+          需求效果
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/Non-inductiverefresh.html" class="nav-link">
+  一些思路
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作记录
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/operationSummary.html" class="nav-link">
+  汇总
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="知识点" class="dropdown-title"><span class="title">知识点</span> <span class="arrow down"></span></button> <button type="button" aria-label="知识点" class="mobile-dropdown-title"><span class="title">知识点</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          理论知识
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/javascript.html" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-subitem"><a href="/knowledge/jsevent.html" class="nav-link">
+  JS事件
+</a></li><li class="dropdown-subitem"><a href="/knowledge/eventloop.html" class="nav-link">
+  JS事件循环
+</a></li><li class="dropdown-subitem"><a href="/knowledge/sourcelink.html" class="nav-link">
+  JS原型链和继承
+</a></li><li class="dropdown-subitem"><a href="/knowledge/callstackenvir.html" class="nav-link">
+  原型和闭包
+</a></li><li class="dropdown-subitem"><a href="/knowledge/authorization.html" class="nav-link">
+  权限校验那点事
+</a></li><li class="dropdown-subitem"><a href="/knowledge/baseknowledge.html" class="nav-link">
+  基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          思路
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/1.html" class="nav-link">
+  埋点实现
+</a></li><li class="dropdown-subitem"><a href="/knowledge/2.html" class="nav-link">
+  动画指令
+</a></li><li class="dropdown-subitem"><a href="/knowledge/3.html" class="nav-link">
+  敏感数据加密方案
+</a></li><li class="dropdown-subitem"><a href="/knowledge/switchskin.html" class="nav-link">
+  皮肤切换
+</a></li><li class="dropdown-subitem"><a href="https://blog.csdn.net/qq_39009348/article/details/105267962" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  多语言方案
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          安全方面
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/async_await.html" class="nav-link">
+  xss
+</a></li></ul></li><li class="dropdown-item"><h4>
+          例子🌰
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/async_await.html" class="nav-link">
+  async/await事件循环
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="好玩🌝" class="dropdown-title"><span class="title">好玩🌝</span> <span class="arrow down"></span></button> <button type="button" aria-label="好玩🌝" class="mobile-dropdown-title"><span class="title">好玩🌝</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tensorflow.google.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  TensorFlow.js
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接分享" class="dropdown-title"><span class="title">链接分享</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接分享" class="mobile-dropdown-title"><span class="title">链接分享</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          知识库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://www.html5iq.com/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端试题库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.cnblogs.com/suihang/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  一只菜鸟工程师
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://f2e.tech/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端知识图谱
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.awesomes.cn/rank" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端top100
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="/everything.html" class="nav-link">
+  前端百科
+</a></li><li class="dropdown-subitem"><a href="/history.html" class="nav-link">
+  前端挣扎史
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://svgtopng.com/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  svg转png 
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  阿里图标库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  兼容自查
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          多端案例
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://svgtopng.com/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  PC后台
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  等等
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          v2
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/skills.html" class="nav-link">
+  实用技巧
+</a></li><li class="dropdown-subitem"><a href="/vue/theory.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  必知原理
+</a></li><li class="dropdown-subitem"><a href="/vue/basic.html" class="nav-link">
+  基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          v3🤨
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/vue3.html" class="nav-link">
+  待更新
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发中" class="dropdown-title"><span class="title">开发中</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发中" class="mobile-dropdown-title"><span class="title">开发中</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/ts/basetype.html" class="nav-link">
+  基本类型
+</a></li><li class="dropdown-subitem"><a href="/ts/compile.html" class="nav-link">
+  编译选项
+</a></li><li class="dropdown-subitem"><a href="/ts/build.html" class="nav-link">
+  打包
+</a></li><li class="dropdown-subitem"><a href="/ts/oop.html" class="nav-link">
+  面向对象
+</a></li><li class="dropdown-subitem"><a href="/ts/interface.html" class="nav-link">
+  接口
+</a></li><li class="dropdown-subitem"><a href="/ts/generic.html" class="nav-link">
+  范型
+</a></li></ul></li><li class="dropdown-item"><h4>
+          模拟测试
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/json-serve.html" class="nav-link">
+  json-serve
+</a></li><li class="dropdown-subitem"><a href="/dev/mockjs.html" class="nav-link">
+  mockjs
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="配置" class="dropdown-title"><span class="title">配置</span> <span class="arrow down"></span></button> <button type="button" aria-label="配置" class="mobile-dropdown-title"><span class="title">配置</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/democonfig/vuerouter.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/axios.html" class="nav-link">
+  axios
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/vuecli.html" class="nav-link">
+  vue-cli4
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/rem.html" class="nav-link">
+  rem
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/format.html" class="nav-link">
+  代码格式化
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/format2.html" class="nav-link">
+  babel
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="设计模式" class="dropdown-title"><span class="title">设计模式</span> <span class="arrow down"></span></button> <button type="button" aria-label="设计模式" class="mobile-dropdown-title"><span class="title">设计模式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/designpatterns/readme1.html" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><h4>
+          创建型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          结构型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          行为型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="经验记录" class="dropdown-title"><span class="title">经验记录</span> <span class="arrow down"></span></button> <button type="button" aria-label="经验记录" class="mobile-dropdown-title"><span class="title">经验记录</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          兼容性
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/H5Compatible.html" class="nav-link">
+  H5组件库兼容
+</a></li><li class="dropdown-subitem"><a href="/experience/iPhonex.html" class="nav-link">
+  iphonex安全区适配
+</a></li><li class="dropdown-subitem"><a href="/experience/pc.html" class="nav-link">
+  PC端兼容性
+</a></li></ul></li><li class="dropdown-item"><h4>
+          性能优化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/performanceoptimization.html" class="nav-link">
+  首页性能优化方案
+</a></li><li class="dropdown-subitem"><a href="/experience/jsoptimization.html" class="nav-link">
+  JS代码优化
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据交互
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/crossDataTransfer.html" class="nav-link">
+  跨域数据传递
+</a></li><li class="dropdown-subitem"><a href="/experience/filedown.html" class="nav-link">
+  前端文件下载
+</a></li><li class="dropdown-subitem"><a href="/experience/postupload.html" class="nav-link">
+  前端post提交
+</a></li></ul></li><li class="dropdown-item"><h4>
+          需求效果
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/Non-inductiverefresh.html" class="nav-link">
+  一些思路
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作记录
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/operationSummary.html" class="nav-link">
+  汇总
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="知识点" class="dropdown-title"><span class="title">知识点</span> <span class="arrow down"></span></button> <button type="button" aria-label="知识点" class="mobile-dropdown-title"><span class="title">知识点</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          理论知识
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/javascript.html" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-subitem"><a href="/knowledge/jsevent.html" class="nav-link">
+  JS事件
+</a></li><li class="dropdown-subitem"><a href="/knowledge/eventloop.html" class="nav-link">
+  JS事件循环
+</a></li><li class="dropdown-subitem"><a href="/knowledge/sourcelink.html" class="nav-link">
+  JS原型链和继承
+</a></li><li class="dropdown-subitem"><a href="/knowledge/callstackenvir.html" class="nav-link">
+  原型和闭包
+</a></li><li class="dropdown-subitem"><a href="/knowledge/authorization.html" class="nav-link">
+  权限校验那点事
+</a></li><li class="dropdown-subitem"><a href="/knowledge/baseknowledge.html" class="nav-link">
+  基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          思路
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/1.html" class="nav-link">
+  埋点实现
+</a></li><li class="dropdown-subitem"><a href="/knowledge/2.html" class="nav-link">
+  动画指令
+</a></li><li class="dropdown-subitem"><a href="/knowledge/3.html" class="nav-link">
+  敏感数据加密方案
+</a></li><li class="dropdown-subitem"><a href="/knowledge/switchskin.html" class="nav-link">
+  皮肤切换
+</a></li><li class="dropdown-subitem"><a href="https://blog.csdn.net/qq_39009348/article/details/105267962" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  多语言方案
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          安全方面
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/async_await.html" class="nav-link">
+  xss
+</a></li></ul></li><li class="dropdown-item"><h4>
+          例子🌰
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/async_await.html" class="nav-link">
+  async/await事件循环
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="好玩🌝" class="dropdown-title"><span class="title">好玩🌝</span> <span class="arrow down"></span></button> <button type="button" aria-label="好玩🌝" class="mobile-dropdown-title"><span class="title">好玩🌝</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tensorflow.google.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  TensorFlow.js
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接分享" class="dropdown-title"><span class="title">链接分享</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接分享" class="mobile-dropdown-title"><span class="title">链接分享</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          知识库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://www.html5iq.com/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端试题库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.cnblogs.com/suihang/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  一只菜鸟工程师
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://f2e.tech/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端知识图谱
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.awesomes.cn/rank" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端top100
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="/everything.html" class="nav-link">
+  前端百科
+</a></li><li class="dropdown-subitem"><a href="/history.html" class="nav-link">
+  前端挣扎史
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://svgtopng.com/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  svg转png 
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  阿里图标库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  兼容自查
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          多端案例
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://svgtopng.com/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  PC后台
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  等等
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>vue 原理</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue/theory.html#数据绑定原理" class="sidebar-link">数据绑定原理</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/vue/theory.html#响应式更新原理" class="sidebar-link">响应式更新原理</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/vue/theory.html#虚拟-dom-和-diff-算法" class="sidebar-link">虚拟 dom 和 diff 算法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue/theory.html#patchvnode-方法" class="sidebar-link">patchVnode 方法</a></li><li class="sidebar-sub-header"><a href="/vue/theory.html#updatechildren-方法" class="sidebar-link">updateChildren 方法</a></li><li class="sidebar-sub-header"><a href="/vue/theory.html#v-for-使用-index-作-key" class="sidebar-link">v-for 使用 index 作 key</a></li><li class="sidebar-sub-header"><a href="/vue/theory.html#自我小结" class="sidebar-link">自我小结</a></li></ul></li><li><a href="/vue/theory.html#vue-渲染" class="sidebar-link">vue 渲染</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue/theory.html#渲染流程" class="sidebar-link">渲染流程</a></li><li class="sidebar-sub-header"><a href="/vue/theory.html#compile-详解" class="sidebar-link">compile 详解</a></li><li class="sidebar-sub-header"><a href="/vue/theory.html#ast-抽象语法树" class="sidebar-link">AST（抽象语法树）</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue-原理"><a href="#vue-原理" class="header-anchor">#</a> vue 原理</h1> <blockquote><p>对于原理的东西，其实有深有浅，此文尽量凭一己之力根据现在文档简单的讲清楚</p></blockquote> <p>写个 list</p> <ul><li>vue 双向绑定原理</li> <li>vue 响应式更新原理</li> <li>虚拟 dom 算法 diff</li> <li>vue 渲染函数，模版编译</li></ul> <h2 id="数据绑定原理"><a href="#数据绑定原理" class="header-anchor">#</a> 数据绑定原理</h2> <blockquote><p>单向绑定，在 vue 中，一般页面使用<code>{{}}</code>引用变量的操作就是单向绑定，数据只会从<code>data</code>传递到页面，故称为单向绑定。<br>
+双向绑定是在单向绑定基础上，把 dom 上的修改变化传递会<code>data</code>，这样数据的改动既可以从页面到 js 也可以从 js 到页面，故称为双向绑定。</p></blockquote> <ol><li>数据从 js 到页面</li></ol> <p>基本原理是数据劫持+依赖收集，这里不展开，往后介绍</p> <ol start="2"><li>数据从页面到 js</li></ol> <blockquote><p>需要说明的是，双向绑定一般只针对表单控件，因为需要依照表单的 webapi 事件。</p></blockquote> <p>利用表单控件的 <code>oninput</code>、<code>onchange</code> 等事件,把控件数据的修改变化重新赋值回 js。</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p><code>v-model</code>只是一个语法糖，其本质是包含<code>v-bind</code>的数据单向传递和<code>input</code>事件中数据对象的重新赋值。
+在自定义组件时，可自定义 model 属性，提供 v-model 双向绑定</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>  model<span class="token operator">:</span> <span class="token punctuation">{</span>
+    prop<span class="token operator">:</span> <span class="token string">'checked'</span><span class="token punctuation">,</span>
+    event<span class="token operator">:</span> <span class="token string">'change'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div></div> <h2 id="响应式更新原理"><a href="#响应式更新原理" class="header-anchor">#</a> 响应式更新原理</h2> <ol><li><p>Object.defineProperty()</p> <p>老生常谈 es5 的一个数据劫持 api<code>Object.defineProperty()</code>，把数据转化为<code>getter/setter</code>，使得数据获取以及修改都执行对应的函数。</p></li> <li><p><code>data</code>数据转化</p> <p>当你把一个普通的 <code>JavaScript</code> 对象传入 Vue 实例作为 <code>data</code> 选项，Vue 将遍历此对象所有的 <code>property</code>，并使用 <code>Object.defineProperty</code> 把这些 <code>property</code> 全部转为 getter/setter。Object.defineProperty 是 ES5 中一个无法 shim 的特性，这也就是 Vue 不支持 <code>IE8</code>以及更低版本浏览器的原因。</p></li> <li><p>依赖收集<br>
+每个组件实例都对应一个 <code>watcher</code> 实例，它会在组件渲染的过程中把“接触”过的数据 <code>property</code> 记录为依赖。之后当依赖项的 <code>setter</code> 触发时，会通知 <code>watcher</code>，从而使它关联的组件重新渲染。</p></li></ol> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>其实这里涉及到一个叫做观察者模式的设计模式，设计模式在本站会有详细描述。</p></div> <p>基于 javascript 会存在一些问题</p> <ul><li>对象</li></ul> <p>由于 vue 是在创建的时候转化 getter/setter，因此创建之后再往 data 添加属性就不是响应式。<br>
+可使用<code>this.$set</code>或<code>vue.set()</code>手动添加对象的响应式。</p> <ul><li><p>数组<br>
+对于数据，因为性能的原因，vue 不能监听直接用索引下标设置值以及手动修改数据长度。</p> <p>对于前者，可使用<code>set()</code>api 设置，或<code>splice()</code>数据方法。
+对于后者，可使用<code>splice()</code></p></li></ul> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>Vue 将被侦听的数组的变更方法进行了包裹,所以它们也将会触发视图更新。这些被包裹过的方法包括:push() pop() shift() unshift() splice() sort() reverse()。</p></div> <h2 id="虚拟-dom-和-diff-算法"><a href="#虚拟-dom-和-diff-算法" class="header-anchor">#</a> 虚拟 dom 和 diff 算法</h2> <ul><li>虚拟 dom<br>
+虚拟 dom 是用 js 对象模拟真实 dom，本质是一个 js 数据。就这么简单 😭</li></ul> <ul><li><p>diff 算法<br>
+Diff 算法是一种<code>对比算法</code>。对比两者是<code>旧虚拟 DOM</code> 和<code>新虚拟 DOM</code>，对比出是哪个虚拟节点更改了，找出这个虚拟节点，并只更新这个虚拟节点所对应的真实节点，而不用更新其他数据没发生改变的节点，实现精准地更新真实 DOM，进而提高效率 🐮🍺</p></li> <li><p>高效更新 dom<br>
+虚拟 dom+diff 算法，对比计算出更改的部分，然后只针对这部分做修改，可以最大程度减少页面重绘和重排。👍</p></li> <li><p>Diff 算法的原理</p> <blockquote><p>其实就是对比的方式、对比的流程</p></blockquote></li></ul> <ol><li>Diff 同层对比<br>
+新旧虚拟 DOM 对比的时候，Diff 算法比较只会在同层级进行, 不会跨层级比较。 所以 Diff 算法是:<code>深度优先算法</code>。 时间复杂度:<code>O(n)</code></li> <li>对比流程<br>
+当数据改变时，会触发<code>setter</code>，并且通过 <code>Dep.notify</code> 去通知所有订阅者 Watcher，订阅者们就会调用 <code>patch</code> 方法，给真实 DOM 打补丁，更新相应的视图。</li></ol> <p><strong>重点概念图</strong></p> <img src="/assets/img/diff.75227d91.png"> <ol start="3"><li><p><code>patch 方法</code>
+这个方法作用就是，对比当前同层的虚拟节点是否为同一种类型的标签：</p> <ul><li>是：继续执行 patchVnode 方法进行深层比对</li> <li>否：没必要比对了，直接整个节点替换成新虚拟节点</li></ul></li> <li><p><code>sameVnode 方法</code>
+patch 关键的一步就是 sameVnode 方法判断是否为<code>同一类型节点</code>😊</p></li></ol> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">sameVnode</span><span class="token punctuation">(</span><span class="token parameter">oldVnode<span class="token punctuation">,</span> newVnode</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    oldVnode<span class="token punctuation">.</span>key <span class="token operator">===</span> newVnode<span class="token punctuation">.</span>key <span class="token operator">&amp;&amp;</span> <span class="token comment">// key 值是否一样</span>
+    oldVnode<span class="token punctuation">.</span>tagName <span class="token operator">===</span> newVnode<span class="token punctuation">.</span>tagName <span class="token operator">&amp;&amp;</span> <span class="token comment">// 标签名是否一样</span>
+    oldVnode<span class="token punctuation">.</span>isComment <span class="token operator">===</span> newVnode<span class="token punctuation">.</span>isComment <span class="token operator">&amp;&amp;</span> <span class="token comment">// 是否都为注释节点</span>
+    <span class="token function">isDef</span><span class="token punctuation">(</span>oldVnode<span class="token punctuation">.</span>data<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token function">isDef</span><span class="token punctuation">(</span>newVnode<span class="token punctuation">.</span>data<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token comment">// 是否都定义了 data</span>
+    <span class="token function">sameInputType</span><span class="token punctuation">(</span>oldVnode<span class="token punctuation">,</span> newVnode<span class="token punctuation">)</span> <span class="token comment">// 当标签为 input 时，type 必须是否相同</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="patchvnode-方法"><a href="#patchvnode-方法" class="header-anchor">#</a> patchVnode 方法</h3> <p>这个函数做了以下事情：</p> <ul><li>找到对应的真实 DOM，称为 <code>el</code></li> <li>判断 <code>newVnode</code> 和 <code>oldVnode</code> 是否指向同一个对象，如果是，那么直接 return</li> <li>如果他们都有文本节点并且不相等，那么将 <code>el</code> 的文本节点设置为 <code>newVnode</code> 的文本节点。</li> <li>如果 <code>oldVnode</code> 有子节点而 <code>newVnode</code> 没有，则删除 <code>el</code> 的子节点</li> <li>如果 <code>oldVnode</code> 没有子节点而 <code>newVnode</code> 有，则将 <code>newVnode</code> 的子节点真实化之后添加到 <code>el</code></li> <li>如果两者都有子节点，则执行 <code>updateChildren</code> 函数比较子节点，这一步很重要</li></ul> <h3 id="updatechildren-方法"><a href="#updatechildren-方法" class="header-anchor">#</a> updateChildren 方法</h3> <p>这是 patchVnode 里最重要的一个方法，新旧虚拟节点的子节点对比，就是发生在 updateChildren 方法中</p> <img src="/assets/img/diff-detail.fa0b874e.png"> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>上面的例子是 newCh 比 oldCh 多，假如相反，是 oldCh 比 newCh 多的话，那就是 newCh 先走完循环，然后 oldCh 会有多出的节点，结果会在真实 DOM 里进行删除这些旧节点。</p></div> <h3 id="v-for-使用-index-作-key"><a href="#v-for-使用-index-作-key" class="header-anchor">#</a> v-for 使用 index 作 key</h3> <p>简单讲会影响性能，因为 diff 算法原理的缘故，可能会导致不必要 dom 更新。
+<img src="/assets/img/diff-key.548f479f.png"></p> <h3 id="自我小结"><a href="#自我小结" class="header-anchor">#</a> 自我小结</h3> <p>其实上述内容都是依据 <a href="https://juejin.cn/post/6994959998283907102">15 张图，20 分钟吃透 Diff 算法核心原理，我说的！！！ </a><br>
+简单来说，虚拟 dom+diff 算法可以用来实现以最小开销更新页面，再补充 🦑 溪对于页面数据更新性能的理解<a href="https://www.zhihu.com/question/31809713/answer/53544875">看 🦑 溪的回答</a><br>
+总的来说，vue 采用虚拟 dom+diff 算法是均衡考虑，而上文也结合 🌰 说明 diff 算法全过程，个中涉及算法，同时也解决了很多代码层面上表现应避开的缺陷。</p> <h2 id="vue-渲染"><a href="#vue-渲染" class="header-anchor">#</a> vue 渲染</h2> <h3 id="渲染流程"><a href="#渲染流程" class="header-anchor">#</a> 渲染流程</h3> <img src="/assets/img/Renderingprocess.01db136b.png"> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>vue 包括包括两种版本，运行时 + 编译器 和 只包含运行时，编译器用来把 vue 模版编译成 render 函数，就是上图的 compile()</p></div> <p>本小节侧重讲解 vue 在整个生命周期中，渲染部分，其余生命周期钩子不展开。</p> <h4 id="mount"><a href="#mount" class="header-anchor">#</a> <code>$mount</code></h4> <p>在 new Vue()实例时，如果存在<code>el</code>选项，实例将立即进入编译过程，否则，需要显式调用 vm.$mount() 手动开启编译。
+可见上图<code>$mount</code> 是进入编译状态，编译模版语法。</p> <h4 id="compile-方法"><a href="#compile-方法" class="header-anchor">#</a> <code>compile()方法</code></h4> <p>Vue 的模板编译是在 <code>$mount</code> 的过程中进行的，在 $mount 的时候执行了 <code>compile</code> 这个方法来将 <code>template</code> 里的内容转换成 <code>render</code> 函数，等待调用。</p> <p>compile 含有三个阶段：</p> <ol><li><p>parse 函数解析 template</p> <p>parse 函数里定义了许多的正则表达式，通过对标签名开头、标签名结尾、属性字段、文本内容等等的递归匹配。把字符串类型的 template 转化成了树状结构的 AST（抽象语法树）。</p></li> <li><p>标记静态根节点</p> <p>对 parse 生成的 AST 进行静态内容的优化。静态内容指的是和数据没有关系，不需要每次都刷新的内容。标记静态节点的作用是为了在后面做 Vnode 的 diff 时起作用，用来确认一个节点是否应该做 patch 还是直接跳过。</p></li> <li><p>generate 函数创建 render 函数字符串</p> <p>通过 generate 函数，递归 AST，为每个 AST 节点生成 render 函数。</p></li></ol> <h4 id="watcher"><a href="#watcher" class="header-anchor">#</a> <code>watcher</code></h4> <p>编译后生成 render 函数，执行后就会生成虚拟 dom，同时 new watcher(),收集依赖集合一起，这里埋个坑，交给设计模式。（上面响应式原理也有讲到，是同一个东西）</p> <p>参考链接 🔗 <a href="https://blog.csdn.net/qq_40413670/article/details/117714765" target="__brank">vue 中三种 watcher</a></p> <h4 id="patch"><a href="#patch" class="header-anchor">#</a> <code>patch</code></h4> <p>当 setter 数据有更新时，执行重新生成 new vdom 结合 diff 算法，上面也有讲到。</p> <h3 id="compile-详解"><a href="#compile-详解" class="header-anchor">#</a> compile 详解</h3> <p><a href="https://blog.csdn.net/wang729506596/article/details/90947583" target="__brank">compile 详解参考文章</a></p> <p><strong>parse 函数</strong>
+在了解 parse 的过程之前，我们需要了解 AST，<code>AST</code> 的全称是 Abstract Syntax Tree，也就是所谓抽象语法树，用来表示代码的数据结构。在 Vue 中我把它理解为嵌套的、携带标签名、属性和父子关系的 JS 对象，以树来表现 DOM 结构。</p> <p>vue 中的 ast 类型有以下 3 种:</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>ASTElement <span class="token operator">=</span> <span class="token punctuation">{</span>  <span class="token comment">// AST标签元素</span>
+  type<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  tag<span class="token operator">:</span> string<span class="token punctuation">;</span>
+  attrsList<span class="token operator">:</span> Array<span class="token operator">&lt;</span><span class="token punctuation">{</span> name<span class="token operator">:</span> string<span class="token punctuation">;</span> value<span class="token operator">:</span> any <span class="token punctuation">}</span><span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  attrsMap<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token punctuation">[</span>key<span class="token operator">:</span> string<span class="token punctuation">]</span><span class="token operator">:</span> any <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  parent<span class="token operator">:</span> ASTElement <span class="token operator">|</span> <span class="token keyword">void</span><span class="token punctuation">;</span>
+  children<span class="token operator">:</span> Array<span class="token operator">&lt;</span>ASTNode<span class="token operator">&gt;</span>
+
+  <span class="token operator">...</span>
+<span class="token punctuation">}</span>
+
+ASTExpression <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token comment">// AST表达式 {{ }}</span>
+  type<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  expression<span class="token operator">:</span> string<span class="token punctuation">;</span>
+  text<span class="token operator">:</span> string<span class="token punctuation">;</span>
+  tokens<span class="token operator">:</span> Array<span class="token operator">&lt;</span>string <span class="token operator">|</span> Object<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+  <span class="token keyword">static</span><span class="token operator">?</span><span class="token operator">:</span> boolean<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+ASTText <span class="token operator">=</span> <span class="token punctuation">{</span>  <span class="token comment">// AST文本</span>
+  type<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">;</span>
+  text<span class="token operator">:</span> string<span class="token punctuation">;</span>
+  <span class="token keyword">static</span><span class="token operator">?</span><span class="token operator">:</span> boolean<span class="token punctuation">;</span>
+  isComment<span class="token operator">?</span><span class="token operator">:</span> boolean<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><p>通过 children 字段来形成一种层层嵌套的树状结构。vue 中定义了许多正则(判断标签开始、结束、属性、vue 指令、文本)，通过对 html 内容进行递归正则匹配，对满足条件的字符串进行截取。把字符串类型的 html 转换位 AST 结构</p> <blockquote><p>parse 函数的作用就是把字符串型的 template 转化为 AST 结构</p></blockquote> <p>🌰</p> <div class="language-html line-numbers-mode"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>“test”<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>texttext<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>转化为</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>ele1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+  type<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  tag<span class="token operator">:</span> <span class="token string">&quot;div&quot;</span><span class="token punctuation">,</span>
+  attrsList<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">&quot;id&quot;</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">&quot;test&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  attrsMap<span class="token operator">:</span> <span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token string">&quot;test&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  parent<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+  children<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      type<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      text<span class="token operator">:</span> <span class="token string">&quot;texttext&quot;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  plain<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  attrs<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">&quot;id&quot;</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">&quot;'test'&quot;</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>简单来说，template 的 parse 过程，其实就是不断的截取字符串并解析它们的过程。</p> <p>在此过程中，如果截取到非闭合标签就 push 到 stack 中，如果截取道结束标签就把这个标签 pop 出来。</p> <p><strong>optimize 优化</strong>
+optimize 的作用主要是对生成的 AST 进行静态内容的优化，标记静态节点。所谓静态内容，指的是和数据没有关系，不需要每次都更新的内容。<br>
+标记静态节点的作用的作用是为了之后 dom diff 时，是否需要 patch，diff 算法会直接跳过静态节点，从而减少了比较的过程，优化了 patch 的性能。</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>1. 如果是表达式AST节点，直接返回 false
+2. 如果是文本AST节点，直接返回 true
+3. 如果元素是元素节点，阶段有 v-pre 指令 ||
+  1. 没有任何指令、数据绑定、事件绑定等 &amp;amp;&amp;amp;
+  2. 没有 v-if 和 v-for &amp;amp;&amp;amp;
+  3. 不是 slot 和 component &amp;amp;&amp;amp;
+  4. 是 HTML 保留标签 &amp;amp;&amp;amp;
+  5. 不是 template 标签的直接子元素并且没有包含在 for 循环中
+  则返回 true
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>简单来说，没有使用 vue 独有的语法的节点就可以称为静态节点</p> <p>判断一个父级元素是静态节点，则需要判断它的所有子节点都是静态节点，否则就不是静态节点</p> <p>标记静态节点的过程是一个不断递归的过程</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> l <span class="token operator">=</span> node<span class="token punctuation">.</span>children<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> l<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> child <span class="token operator">=</span> node<span class="token punctuation">.</span>children<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+  <span class="token function">markStatic</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>child<span class="token punctuation">.</span>static<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    node<span class="token punctuation">.</span>static <span class="token operator">=</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>markStatic 方法是用来标记静态节点的方法，它会不断的循环 children,如果 children 还有 children，则走相同的逻辑。这样所有的节点都会被打上标记。</p> <p>在循环中会判断，子节点是否为静态节点，如果不是则其父节点不是静态节点。</p> <p><strong>generate 生成 render 函数</strong>
+generate 是将 AST 转化成 render funtion 字符串的过程，他递归了 AST，得到结果是 render 的字符串。
+render 函数的就是返回一个_c(‘tagName’,data,children)的方法</p> <ol><li>第一个参数是标签名</li> <li>第二个参数是他的一些数据，包括属性/指令/方法／表达式等等。</li> <li>第三个参数是当前标签的子标签,同样的，每一个子标签的格式也是_c(‘tagName’,data,children)。</li></ol> <p>generate 就是通过不断递归形成了这么一种树形结构。</p> <img src="/assets/img/generate.c5cb0dfd.jpg"> <ol><li>genElement：用来生成基本的 render 结构或者叫 createElement 结构</li> <li>genData: 处理 ast 结构上的一些属性，用来生成 data</li> <li>genChildren:处理 ast 的 children,并在内部调用 genElement,形成子元素的_c()方法</li></ol> <p>render 字符串内部有几种方法:</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>几种内部方法
+_c：对应的是 createElement 方法，顾名思义，它的含义是创建一个元素(Vnode)
+_v：创建一个文本结点。
+_s：把一个值转换为字符串。（eg: {{data}}）
+_m：渲染静态内容
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>🌰
+&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    {{val}}
+    &lt;img src=&quot;http://xx.jpg&quot;&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+{
+  render: with(this) {
+    return _c('div', {
+      attrs: {
+        &quot;id&quot;: &quot;app&quot;
+      }
+    }, [_v(&quot;\n&quot; + _s(val) + &quot;\n&quot;),
+        _c('img', {
+              attrs: {
+                &quot;src&quot;: &quot;&quot;
+              }
+            })
+        ]
+    )
+  }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><blockquote><p>vue template 模板编译的过程经过 parse()生成 ast(抽象语法树),optimize 对静态节点优化，generate()生成 render 字符串</p></blockquote> <h3 id="ast-抽象语法树"><a href="#ast-抽象语法树" class="header-anchor">#</a> AST（抽象语法树）</h3> <p>无论是代码编译（babel），打包（webpack），代码压缩，css 预处理，代码校验（eslint），代码美化（pretiier），Vue 中对 template 的编译，这些的实现都离不开 AST。</p> <blockquote><p>我的理解就是把高级语言语法转化为更有规律更低一层的语法树。</p></blockquote> <h4 id="什么是-ast"><a href="#什么是-ast" class="header-anchor">#</a> 什么是 AST</h4> <p><a href="https://juejin.cn/post/6844904019505184776" target="__brank">参考链接 🔗 </a></p> <p>AST 是对源代码的抽象语法结构的树状表现形式。</p> <p>在不同的场景下，会有不同的解析器将源码解析成抽象语法树。</p> <p>🌰</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token keyword">let</span> answer <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token number">3</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>转化</p> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code><span class="token punctuation">{</span>
+    <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Program&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;body&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;VariableDeclaration&quot;</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;declarations&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;VariableDeclarator&quot;</span><span class="token punctuation">,</span>
+                    <span class="token string">&quot;id&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                        <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Identifier&quot;</span><span class="token punctuation">,</span>
+                        <span class="token string">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;answer&quot;</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token string">&quot;init&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                        <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;BinaryExpression&quot;</span><span class="token punctuation">,</span>
+                        <span class="token string">&quot;operator&quot;</span><span class="token operator">:</span> <span class="token string">&quot;*&quot;</span><span class="token punctuation">,</span>
+                        <span class="token string">&quot;left&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                            <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Literal&quot;</span><span class="token punctuation">,</span>
+                            <span class="token string">&quot;value&quot;</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+                            <span class="token string">&quot;raw&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2&quot;</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token string">&quot;right&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                            <span class="token string">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Literal&quot;</span><span class="token punctuation">,</span>
+                            <span class="token string">&quot;value&quot;</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+                            <span class="token string">&quot;raw&quot;</span><span class="token operator">:</span> <span class="token string">&quot;3&quot;</span>
+                        <span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token string">&quot;kind&quot;</span><span class="token operator">:</span> <span class="token string">&quot;let&quot;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;sourceType&quot;</span><span class="token operator">:</span> <span class="token string">&quot;script&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><h4 id="ast-是如何生成的"><a href="#ast-是如何生成的" class="header-anchor">#</a> AST 是如何生成的</h4> <p>AST 是通过 JS Parser （解析器），将 js 源码转化为抽象语法树，主要分为两步</p> <ol><li>分词
+将整个的代码字符串，分割成语法单元数组（token）。 JS 中的语法单元（token）指标识符（function，return），运算符，括号，数字，字符串等能解析的最小单元。主要有以下几种：</li></ol> <div class="language-text line-numbers-mode"><pre class="language-text"><code>标识符
+没有被引号括起来的连续字符，可以包含字母、数字、_、$，其中数字不能作为开头。
+标识符可能是var，return，function等关键字，也可能是true，false这样的内置常量，或是一个变量。具体是哪种语义，分词阶段不区分，只要正确拆分即可。
+
+数字
+十六进制，十进制，八进制以及科学表达式等都是最小单元
+
+运算符： +、-、 *、/ 等
+
+字符串 对计算机而言，字符串只会参与计算和展示，具体里面细分没必要分析
+
+注释  不管是行注释还是块注释，对于计算机来说并不关心其内容，所以可以作为不可再拆分的最小单元
+
+空格 连续的空格，换行，缩进等，只要不在字符串中都没有实际的逻辑意义，所以连续的空格可以作为一个语法单元。
+
+其他，大括号，中括号，小括号，冒号 等等。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ol start="2"><li><p>语义分析</p> <p>语义分析的目的是将分词得到的语法单元进行一个整体的组合，分析确定语法单元之间的关系。</p> <p>简单来说，语义分析可以理解成对语句（statement）和表达式（expression）的识别。</p> <ol><li>语句，一个具备边界的代码区域。相邻的两个语句之间从语法上讲互不影响。比如： var a = 1; if(xxx){xxx}</li> <li>表达式，指最终会有一个结果的一小段代码，它可以嵌入到另一个表达式中，且包含在表达式中。比如：a++， i &gt; 0 &amp;&amp; i&lt; 6</li></ol></li></ol> <p>语义分析是一个递归的过程，它会将分词分析出来的数组转化成树形的表达形式。同时，会验证语法，语法如果存在错误的话，会抛出语法错误。</p> <h4 id="应用"><a href="#应用" class="header-anchor">#</a> 应用</h4> <img src="/assets/img/babel+ast.8e0ca5ef.png"> <img src="/assets/img/vue+ast.e56d5422.png"> <blockquote><p>感觉很厉害 👍</p></blockquote></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">11/18/2021, 9:46:23 AM</span></div></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.96655bd5.js" defer></script><script src="/assets/js/2.c765e33f.js" defer></script><script src="/assets/js/4.7c079fc3.js" defer></script>
+    <div class="footer">
+        <div
+          class="record"
+          onclick="window.open('https:\/\/beian.miit.gov.cn/','__brank')"
+        >
+          粤ICP备2021166883号
+        </div>
+  </body>
+</html>

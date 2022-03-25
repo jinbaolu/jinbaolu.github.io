@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>H5 兼容性总结 | Lujinbao</title>
+    <meta name="generator" content="VuePress 1.8.2" />
+    <link rel="icon" href="/img/logo.png">
+    <link rel="manifest" href="/img/photo.jpg">
+    <link rel="apple-touch-icon" href="/img/logo.png"> <meta name="description" content="记录笔记✏️✏️">
+    <meta http-quiv="pragma" cotent="no-cache">
+    <meta http-quiv="pragma" cotent="no-cache,must-revalidate">
+    <meta http-quiv="expires" cotent="0">
+    <meta name="viewport" cotent="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">  <link rel="preload" href="/assets/css/0.styles.8ba69554.css" as="style"><link rel="preload" href="/assets/js/app.96655bd5.js" as="script"><link rel="preload" href="/assets/js/2.c765e33f.js" as="script"><link rel="preload" href="/assets/js/28.4a7125bd.js" as="script"><link rel="prefetch" href="/assets/js/10.1ea36065.js"><link rel="prefetch" href="/assets/js/11.690eb451.js"><link rel="prefetch" href="/assets/js/12.c575bbda.js"><link rel="prefetch" href="/assets/js/13.519da14a.js"><link rel="prefetch" href="/assets/js/14.aec29db6.js"><link rel="prefetch" href="/assets/js/15.79bad737.js"><link rel="prefetch" href="/assets/js/16.99c0b45b.js"><link rel="prefetch" href="/assets/js/17.7629b526.js"><link rel="prefetch" href="/assets/js/18.094f2dcf.js"><link rel="prefetch" href="/assets/js/19.7da00321.js"><link rel="prefetch" href="/assets/js/20.f1323e33.js"><link rel="prefetch" href="/assets/js/21.65adbe5e.js"><link rel="prefetch" href="/assets/js/22.772e3532.js"><link rel="prefetch" href="/assets/js/23.8521ec2c.js"><link rel="prefetch" href="/assets/js/24.a5d7ff8d.js"><link rel="prefetch" href="/assets/js/25.da29f664.js"><link rel="prefetch" href="/assets/js/26.a54015ef.js"><link rel="prefetch" href="/assets/js/27.9a578738.js"><link rel="prefetch" href="/assets/js/29.cf003232.js"><link rel="prefetch" href="/assets/js/3.8d95e623.js"><link rel="prefetch" href="/assets/js/30.630c202d.js"><link rel="prefetch" href="/assets/js/31.a45d5188.js"><link rel="prefetch" href="/assets/js/32.b0d37eb0.js"><link rel="prefetch" href="/assets/js/33.8620ebe6.js"><link rel="prefetch" href="/assets/js/34.2c84c1a9.js"><link rel="prefetch" href="/assets/js/35.7db6554d.js"><link rel="prefetch" href="/assets/js/36.d983ee20.js"><link rel="prefetch" href="/assets/js/37.25c384c0.js"><link rel="prefetch" href="/assets/js/38.6e02e39e.js"><link rel="prefetch" href="/assets/js/39.e3340481.js"><link rel="prefetch" href="/assets/js/4.7c079fc3.js"><link rel="prefetch" href="/assets/js/40.83cc3365.js"><link rel="prefetch" href="/assets/js/41.58964753.js"><link rel="prefetch" href="/assets/js/42.224a4643.js"><link rel="prefetch" href="/assets/js/43.71ba9f07.js"><link rel="prefetch" href="/assets/js/44.83ab7102.js"><link rel="prefetch" href="/assets/js/45.5a47c8a6.js"><link rel="prefetch" href="/assets/js/46.3f7f6010.js"><link rel="prefetch" href="/assets/js/47.3ef9b075.js"><link rel="prefetch" href="/assets/js/48.9ba46b5a.js"><link rel="prefetch" href="/assets/js/49.06f975b6.js"><link rel="prefetch" href="/assets/js/5.f6636d09.js"><link rel="prefetch" href="/assets/js/50.9da386b2.js"><link rel="prefetch" href="/assets/js/51.bd6c24a3.js"><link rel="prefetch" href="/assets/js/52.3d85b3da.js"><link rel="prefetch" href="/assets/js/53.1f92c333.js"><link rel="prefetch" href="/assets/js/54.40509adb.js"><link rel="prefetch" href="/assets/js/6.e4c05762.js"><link rel="prefetch" href="/assets/js/7.708db099.js"><link rel="prefetch" href="/assets/js/8.165d8f13.js"><link rel="prefetch" href="/assets/js/9.e4ef359a.js"> <link rel="stylesheet" href="/assets/css/0.styles.8ba69554.css">
+    <style>
+      @keyframes rotate {
+        0% {
+          transform: translate(-50%, 0) rotateZ(0deg);
+        }
+        50% {
+          transform: translate(-50%, -2%) rotateZ(180deg);
+        }
+        100% {
+          transform: translate(-50%, 0%) rotateZ(360deg);
+        }
+      }
+
+      .footer {
+        max-width: none !important;
+        width: 100%;
+
+        position: relative;
+        padding: 0px !important;
+        align-items: center;
+
+        z-index: 12;
+        height: 40vh;
+        background-color: rgb(118, 218, 255);
+        overflow: hidden;
+      }
+
+      .footer::before,
+      .footer::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        min-width: 300vw;
+        min-height: 300vw;
+        background-color: #fff;
+        animation-name: rotate;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+      .footer::before {
+        bottom: 15vh;
+        border-radius: 45%;
+        animation-duration: 10s;
+      }
+      .footer::after {
+        bottom: 12vh;
+        opacity: 0.5;
+        border-radius: 47%;
+        animation-duration: 10s;
+      }
+      .footer .record {
+        position: absolute;
+        bottom: 20px;
+        z-index: 13;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      h2 {
+        border-bottom: none;
+      }
+
+      .sidebar {
+        z-index: 11;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="Lujinbao" class="logo"> <span class="site-name can-hide">Lujinbao</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          v2
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/skills.html" class="nav-link">
+  实用技巧
+</a></li><li class="dropdown-subitem"><a href="/vue/theory.html" class="nav-link">
+  必知原理
+</a></li><li class="dropdown-subitem"><a href="/vue/basic.html" class="nav-link">
+  基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          v3🤨
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/vue3.html" class="nav-link">
+  待更新
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发中" class="dropdown-title"><span class="title">开发中</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发中" class="mobile-dropdown-title"><span class="title">开发中</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/ts/basetype.html" class="nav-link">
+  基本类型
+</a></li><li class="dropdown-subitem"><a href="/ts/compile.html" class="nav-link">
+  编译选项
+</a></li><li class="dropdown-subitem"><a href="/ts/build.html" class="nav-link">
+  打包
+</a></li><li class="dropdown-subitem"><a href="/ts/oop.html" class="nav-link">
+  面向对象
+</a></li><li class="dropdown-subitem"><a href="/ts/interface.html" class="nav-link">
+  接口
+</a></li><li class="dropdown-subitem"><a href="/ts/generic.html" class="nav-link">
+  范型
+</a></li></ul></li><li class="dropdown-item"><h4>
+          模拟测试
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/json-serve.html" class="nav-link">
+  json-serve
+</a></li><li class="dropdown-subitem"><a href="/dev/mockjs.html" class="nav-link">
+  mockjs
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="配置" class="dropdown-title"><span class="title">配置</span> <span class="arrow down"></span></button> <button type="button" aria-label="配置" class="mobile-dropdown-title"><span class="title">配置</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/democonfig/vuerouter.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/axios.html" class="nav-link">
+  axios
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/vuecli.html" class="nav-link">
+  vue-cli4
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/rem.html" class="nav-link">
+  rem
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/format.html" class="nav-link">
+  代码格式化
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/format2.html" class="nav-link">
+  babel
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="设计模式" class="dropdown-title"><span class="title">设计模式</span> <span class="arrow down"></span></button> <button type="button" aria-label="设计模式" class="mobile-dropdown-title"><span class="title">设计模式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/designpatterns/readme1.html" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><h4>
+          创建型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          结构型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          行为型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="经验记录" class="dropdown-title"><span class="title">经验记录</span> <span class="arrow down"></span></button> <button type="button" aria-label="经验记录" class="mobile-dropdown-title"><span class="title">经验记录</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          兼容性
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/H5Compatible.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  H5组件库兼容
+</a></li><li class="dropdown-subitem"><a href="/experience/iPhonex.html" class="nav-link">
+  iphonex安全区适配
+</a></li><li class="dropdown-subitem"><a href="/experience/pc.html" class="nav-link">
+  PC端兼容性
+</a></li></ul></li><li class="dropdown-item"><h4>
+          性能优化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/performanceoptimization.html" class="nav-link">
+  首页性能优化方案
+</a></li><li class="dropdown-subitem"><a href="/experience/jsoptimization.html" class="nav-link">
+  JS代码优化
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据交互
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/crossDataTransfer.html" class="nav-link">
+  跨域数据传递
+</a></li><li class="dropdown-subitem"><a href="/experience/filedown.html" class="nav-link">
+  前端文件下载
+</a></li><li class="dropdown-subitem"><a href="/experience/postupload.html" class="nav-link">
+  前端post提交
+</a></li></ul></li><li class="dropdown-item"><h4>
+          需求效果
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/Non-inductiverefresh.html" class="nav-link">
+  一些思路
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作记录
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/operationSummary.html" class="nav-link">
+  汇总
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="知识点" class="dropdown-title"><span class="title">知识点</span> <span class="arrow down"></span></button> <button type="button" aria-label="知识点" class="mobile-dropdown-title"><span class="title">知识点</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          理论知识
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/javascript.html" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-subitem"><a href="/knowledge/jsevent.html" class="nav-link">
+  JS事件
+</a></li><li class="dropdown-subitem"><a href="/knowledge/eventloop.html" class="nav-link">
+  JS事件循环
+</a></li><li class="dropdown-subitem"><a href="/knowledge/sourcelink.html" class="nav-link">
+  JS原型链和继承
+</a></li><li class="dropdown-subitem"><a href="/knowledge/callstackenvir.html" class="nav-link">
+  原型和闭包
+</a></li><li class="dropdown-subitem"><a href="/knowledge/authorization.html" class="nav-link">
+  权限校验那点事
+</a></li><li class="dropdown-subitem"><a href="/knowledge/baseknowledge.html" class="nav-link">
+  基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          思路
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/1.html" class="nav-link">
+  埋点实现
+</a></li><li class="dropdown-subitem"><a href="/knowledge/2.html" class="nav-link">
+  动画指令
+</a></li><li class="dropdown-subitem"><a href="/knowledge/3.html" class="nav-link">
+  敏感数据加密方案
+</a></li><li class="dropdown-subitem"><a href="/knowledge/switchskin.html" class="nav-link">
+  皮肤切换
+</a></li><li class="dropdown-subitem"><a href="https://blog.csdn.net/qq_39009348/article/details/105267962" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  多语言方案
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          安全方面
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/async_await.html" class="nav-link">
+  xss
+</a></li></ul></li><li class="dropdown-item"><h4>
+          例子🌰
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/async_await.html" class="nav-link">
+  async/await事件循环
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="好玩🌝" class="dropdown-title"><span class="title">好玩🌝</span> <span class="arrow down"></span></button> <button type="button" aria-label="好玩🌝" class="mobile-dropdown-title"><span class="title">好玩🌝</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tensorflow.google.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  TensorFlow.js
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接分享" class="dropdown-title"><span class="title">链接分享</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接分享" class="mobile-dropdown-title"><span class="title">链接分享</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          知识库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://www.html5iq.com/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端试题库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.cnblogs.com/suihang/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  一只菜鸟工程师
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://f2e.tech/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端知识图谱
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.awesomes.cn/rank" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端top100
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="/everything.html" class="nav-link">
+  前端百科
+</a></li><li class="dropdown-subitem"><a href="/history.html" class="nav-link">
+  前端挣扎史
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://svgtopng.com/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  svg转png 
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  阿里图标库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  兼容自查
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          多端案例
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://svgtopng.com/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  PC后台
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  等等
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          v2
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/skills.html" class="nav-link">
+  实用技巧
+</a></li><li class="dropdown-subitem"><a href="/vue/theory.html" class="nav-link">
+  必知原理
+</a></li><li class="dropdown-subitem"><a href="/vue/basic.html" class="nav-link">
+  基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          v3🤨
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/vue/vue3.html" class="nav-link">
+  待更新
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发中" class="dropdown-title"><span class="title">开发中</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发中" class="mobile-dropdown-title"><span class="title">开发中</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          TypeScript
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/ts/basetype.html" class="nav-link">
+  基本类型
+</a></li><li class="dropdown-subitem"><a href="/ts/compile.html" class="nav-link">
+  编译选项
+</a></li><li class="dropdown-subitem"><a href="/ts/build.html" class="nav-link">
+  打包
+</a></li><li class="dropdown-subitem"><a href="/ts/oop.html" class="nav-link">
+  面向对象
+</a></li><li class="dropdown-subitem"><a href="/ts/interface.html" class="nav-link">
+  接口
+</a></li><li class="dropdown-subitem"><a href="/ts/generic.html" class="nav-link">
+  范型
+</a></li></ul></li><li class="dropdown-item"><h4>
+          模拟测试
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/dev/json-serve.html" class="nav-link">
+  json-serve
+</a></li><li class="dropdown-subitem"><a href="/dev/mockjs.html" class="nav-link">
+  mockjs
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="配置" class="dropdown-title"><span class="title">配置</span> <span class="arrow down"></span></button> <button type="button" aria-label="配置" class="mobile-dropdown-title"><span class="title">配置</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/democonfig/vuerouter.html" class="nav-link">
+  vue-router
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/axios.html" class="nav-link">
+  axios
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/webpack.html" class="nav-link">
+  webpack
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/vuecli.html" class="nav-link">
+  vue-cli4
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/rem.html" class="nav-link">
+  rem
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/format.html" class="nav-link">
+  代码格式化
+</a></li><li class="dropdown-item"><!----> <a href="/democonfig/format2.html" class="nav-link">
+  babel
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="设计模式" class="dropdown-title"><span class="title">设计模式</span> <span class="arrow down"></span></button> <button type="button" aria-label="设计模式" class="mobile-dropdown-title"><span class="title">设计模式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/designpatterns/readme1.html" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><h4>
+          创建型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          结构型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          行为型
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/designpatterns/single.html" class="nav-link">
+  单例模式
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="经验记录" class="dropdown-title"><span class="title">经验记录</span> <span class="arrow down"></span></button> <button type="button" aria-label="经验记录" class="mobile-dropdown-title"><span class="title">经验记录</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          兼容性
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/H5Compatible.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  H5组件库兼容
+</a></li><li class="dropdown-subitem"><a href="/experience/iPhonex.html" class="nav-link">
+  iphonex安全区适配
+</a></li><li class="dropdown-subitem"><a href="/experience/pc.html" class="nav-link">
+  PC端兼容性
+</a></li></ul></li><li class="dropdown-item"><h4>
+          性能优化
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/performanceoptimization.html" class="nav-link">
+  首页性能优化方案
+</a></li><li class="dropdown-subitem"><a href="/experience/jsoptimization.html" class="nav-link">
+  JS代码优化
+</a></li></ul></li><li class="dropdown-item"><h4>
+          数据交互
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/crossDataTransfer.html" class="nav-link">
+  跨域数据传递
+</a></li><li class="dropdown-subitem"><a href="/experience/filedown.html" class="nav-link">
+  前端文件下载
+</a></li><li class="dropdown-subitem"><a href="/experience/postupload.html" class="nav-link">
+  前端post提交
+</a></li></ul></li><li class="dropdown-item"><h4>
+          需求效果
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/Non-inductiverefresh.html" class="nav-link">
+  一些思路
+</a></li></ul></li><li class="dropdown-item"><h4>
+          操作记录
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/experience/operationSummary.html" class="nav-link">
+  汇总
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="知识点" class="dropdown-title"><span class="title">知识点</span> <span class="arrow down"></span></button> <button type="button" aria-label="知识点" class="mobile-dropdown-title"><span class="title">知识点</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          理论知识
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/javascript.html" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-subitem"><a href="/knowledge/jsevent.html" class="nav-link">
+  JS事件
+</a></li><li class="dropdown-subitem"><a href="/knowledge/eventloop.html" class="nav-link">
+  JS事件循环
+</a></li><li class="dropdown-subitem"><a href="/knowledge/sourcelink.html" class="nav-link">
+  JS原型链和继承
+</a></li><li class="dropdown-subitem"><a href="/knowledge/callstackenvir.html" class="nav-link">
+  原型和闭包
+</a></li><li class="dropdown-subitem"><a href="/knowledge/authorization.html" class="nav-link">
+  权限校验那点事
+</a></li><li class="dropdown-subitem"><a href="/knowledge/baseknowledge.html" class="nav-link">
+  基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          思路
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/1.html" class="nav-link">
+  埋点实现
+</a></li><li class="dropdown-subitem"><a href="/knowledge/2.html" class="nav-link">
+  动画指令
+</a></li><li class="dropdown-subitem"><a href="/knowledge/3.html" class="nav-link">
+  敏感数据加密方案
+</a></li><li class="dropdown-subitem"><a href="/knowledge/switchskin.html" class="nav-link">
+  皮肤切换
+</a></li><li class="dropdown-subitem"><a href="https://blog.csdn.net/qq_39009348/article/details/105267962" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  多语言方案
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          安全方面
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/async_await.html" class="nav-link">
+  xss
+</a></li></ul></li><li class="dropdown-item"><h4>
+          例子🌰
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/knowledge/async_await.html" class="nav-link">
+  async/await事件循环
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="好玩🌝" class="dropdown-title"><span class="title">好玩🌝</span> <span class="arrow down"></span></button> <button type="button" aria-label="好玩🌝" class="mobile-dropdown-title"><span class="title">好玩🌝</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://tensorflow.google.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  TensorFlow.js
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="链接分享" class="dropdown-title"><span class="title">链接分享</span> <span class="arrow down"></span></button> <button type="button" aria-label="链接分享" class="mobile-dropdown-title"><span class="title">链接分享</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          知识库
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://www.html5iq.com/index.html" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端试题库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.cnblogs.com/suihang/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  一只菜鸟工程师
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://f2e.tech/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端知识图谱
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.awesomes.cn/rank" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  前端top100
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="/everything.html" class="nav-link">
+  前端百科
+</a></li><li class="dropdown-subitem"><a href="/history.html" class="nav-link">
+  前端挣扎史
+</a></li></ul></li><li class="dropdown-item"><h4>
+          工具
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://svgtopng.com/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  svg转png 
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  阿里图标库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  兼容自查
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li><li class="dropdown-item"><h4>
+          多端案例
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://svgtopng.com/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  PC后台
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://www.iconfont.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  H5
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-subitem"><a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  等等
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>H5 兼容性总结</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/experience/H5Compatible.html#背景" class="sidebar-link">背景</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/experience/H5Compatible.html#适配范围" class="sidebar-link">适配范围</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/experience/H5Compatible.html#方案" class="sidebar-link">方案</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/experience/H5Compatible.html#实践过的方案" class="sidebar-link">实践过的方案</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/experience/H5Compatible.html#bug" class="sidebar-link">BUG</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="h5-兼容性总结"><a href="#h5-兼容性总结" class="header-anchor">#</a> H5 兼容性总结</h1> <h2 id="背景"><a href="#背景" class="header-anchor">#</a> 背景</h2> <ol><li>客户使用签署页面时，在不同的机型、系统、浏览器上，展现不一致的问题</li> <li>手机浏览器的内存比较小，对页面的性能要求比较高</li> <li>手机分辨率不一样，同一个 UI 稿适应不同手机分辨率</li></ol> <h2 id="适配范围"><a href="#适配范围" class="header-anchor">#</a> 适配范围</h2> <p>产品提供需要适配的范围</p> <h2 id="方案"><a href="#方案" class="header-anchor">#</a> 方案</h2> <ol><li>HTML</li></ol> <p>结构合理，DOM 节点层级不易过深</p> <ol start="2"><li>CSS</li></ol> <p>使用比较新的 CSS 属性时，注意该属性支持的范围（https://caniuse.com/看到支持范围），在支持范围以外，应做向后兼容的方案</p> <ol start="3"><li>JS</li></ol> <ul><li>精简 JS 等</li> <li>在组件传值的时候，建议一层一层传递 props，不建议使用$attrs、$listeners；</li> <li>利用生命周期，在组件卸载前后，清除一些数据、事件等</li></ul> <h2 id="实践过的方案"><a href="#实践过的方案" class="header-anchor">#</a> 实践过的方案</h2> <ol><li>优化 HTML 结构，减少 DOM 节点层级</li> <li>去除$attrs、$listeners，可以提高性能，注意 props 要接受，不然容易造成浏览器奔溃</li> <li>在组件卸载前，释放 canvas 内存</li></ol> <h2 id="bug"><a href="#bug" class="header-anchor">#</a> BUG</h2> <ol><li>canvas 相关</li></ol> <ul><li><p>在 ios 系统上，文档切换多次之后会导致 pdf 渲染不出来；因为在切换文档的时候，canvas dom 节点已经卸载，但是内存并没有释放，使用 canvas.width = 0; canvas.heigth = 0; 来手动释放内存</p></li> <li><p>单个 canvas 太大在 ios 上会显示不了，减小单个 canvas 大小</p></li> <li><p>canvas.toBlob 的方法在 uc 上支持性不好，移动端不用图片展示 pdf。canvas.toDataURL vs toBlob(https://www.zhihu.com/question/59267048) toDataURL 结果比 toBlob 占用更多的内存</p></li> <li><p>移动端 canvas 宽度要刚好占满整个屏幕的时候，不要写 css：width:100%; 要写 transform:scale。写 width:100%还会导致 canvas 模糊 (https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Optimizing_canvas）</p></li> <li><p>canvas 黑屏也是因为 canvas 占内存太多</p></li> <li><p>移动端 canvas 写在 template 里面会导致宽高显示有问题。可以动态生成插入</p></li> <li><p>pdf 内容部分重叠 ，因 canvas 的 height 和样式中的 height 不一致导致，删除样式中的 height</p></li> <li><p>bug 未发现原因：ios 11 系统上，网易入职文档中的第二页不显示，需要通过缩放显示；发现给 page 添加 transform: scale(1)就能把文档展示出来，或者一开始就给 page 通过 css 设置一个固定高度覆盖 style 上后面计算的高度，不知道是什么原因，感觉和视图更新有关。</p></li></ul> <ol start="2"><li>css 问题</li></ol> <ul><li>display:flex 在部分 android 浏览器上支持性不好。</li> <li>1px 问题： transform:scale(0.5)</li> <li>border 兼容性问题，iphone xs 上 div 的 border 只显示了其中两边或三边，原因是 border 不支持 rem, 改 px 没问题。</li> <li>部分安卓下 border-radius: 50%，并不圆; 改 px。</li> <li>魅族自带浏览器，pdf-bar 组件 fix 定位被浏览器操作栏挡住。fix 改 absolute</li> <li>骑缝章背景图 background-size: 100%/cover/contain 未能填充满整个 div。</li> <li>多写禁止选中文本，更有原生感觉：user-select: none;</li></ul> <ol start="3"><li>js</li></ol> <ul><li>往返缓存问题 bfcache: 点击浏览器返回时候不自动刷新页面，特别是 mobile safari(https://segmentfault.com/a/1190000015321895)</li> <li>荣耀 8x 下编辑和删除按钮点的 touchstart 事件没触发，touchend 触发了。ios10 下编辑和删除按钮点 touchstart 和 touchend 都没触发。后改为 click 事件，有 300ms 延迟。</li> <li>内存优化： 清理 Detached HtmlDivElement/减少子元素监听器，放在父元素上，特别是不要给每个子元素都创建一个 alloyFinger 实例</li> <li>video: 视频编码的问题导致 video 无法展示/可用 video.js 处理</li></ul> <ol start="4"><li>html</li></ol> <ul><li>移动端点 input 框输入，页面被放大。可设置禁止缩放 viewport: &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=no&quot;&gt;</li> <li>ios11 及以下不支持下载，部分 ios 不支持 window.open，下载可用 a 标签</li></ul> <ol start="5"><li>vue</li></ol> <ul><li>印章拖拽边缘判断不准确，dom 元素获取不能放 computed 计算，当属性没有发生改变的时候，当前变量的值会从缓存中读取，导致位置计算不准确。可以放到 mounted</li></ul></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated:</span> <span class="time">11/15/2021, 2:51:13 PM</span></div></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.96655bd5.js" defer></script><script src="/assets/js/2.c765e33f.js" defer></script><script src="/assets/js/28.4a7125bd.js" defer></script>
+    <div class="footer">
+        <div
+          class="record"
+          onclick="window.open('https:\/\/beian.miit.gov.cn/','__brank')"
+        >
+          粤ICP备2021166883号
+        </div>
+  </body>
+</html>
